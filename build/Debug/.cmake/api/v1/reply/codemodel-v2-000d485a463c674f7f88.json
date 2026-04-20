@@ -1,0 +1,87 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16.4"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "Digitally_Controlled_Power_Source",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "Digitally_Controlled_Power_Source.elf::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Digitally_Controlled_Power_Source.elf-Debug-c0ffd4440a6167169b7c.json",
+					"name" : "Digitally_Controlled_Power_Source.elf",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "generate_content_Digitally_Controlled_Power_Source::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-generate_content_Digitally_Controlled_Power_Source-Debug-b5f534010189902e522b.json",
+					"name" : "generate_content_Digitally_Controlled_Power_Source",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "generate_sbd_Digitally_Controlled_Power_Source::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-generate_sbd_Digitally_Controlled_Power_Source-Debug-09aad8bc5dbf55c7122e.json",
+					"name" : "generate_sbd_Digitally_Controlled_Power_Source",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "open_rasc_Digitally_Controlled_Power_Source::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-open_rasc_Digitally_Controlled_Power_Source-Debug-9debfb304416301e8fd7.json",
+					"name" : "open_rasc_Digitally_Controlled_Power_Source",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "D:/Renesas/R7FA6M5BF3CFP/Digitally_Controlled_Power_Source/build/Debug",
+		"source" : "D:/Renesas/R7FA6M5BF3CFP/Digitally_Controlled_Power_Source"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}

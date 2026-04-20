@@ -1,0 +1,755 @@
+     VMA      LMA     Size Align Out     In      Symbol
+       0        0        0     1 RAM_START = 0x20000000
+       0        0        0     1 RAM_LENGTH = 0x00080000
+       0        0        0     1 FLASH_START = 0x00000000
+       0        0        0     1 FLASH_LENGTH = 0x00100000
+       0        0        0     1 DATA_FLASH_START = 0x08000000
+       0        0        0     1 DATA_FLASH_LENGTH = 0x00002000
+       0        0        0     1 QSPI_FLASH_START = 0x60000000
+       0        0        0     1 QSPI_FLASH_LENGTH = 0x04000000
+       0        0        0     1 OSPI0_CS0_START = 0x68000000
+       0        0        0     1 OSPI0_CS0_LENGTH = 0x08000000
+       0        0        0     1 OSPI0_CS1_START = 0x70000000
+       0        0        0     1 OSPI0_CS1_LENGTH = 0x10000000
+       0        0        0     1 OPTION_SETTING_OFS0_START = 0x0100a100
+       0        0        0     1 OPTION_SETTING_OFS0_LENGTH = 0x00000004
+       0        0        0     1 OPTION_SETTING_DUALSEL_START = 0x0100a110
+       0        0        0     1 OPTION_SETTING_DUALSEL_LENGTH = 0x00000004
+       0        0        0     1 OPTION_SETTING_OFS1_START = 0x0100a180
+       0        0        0     1 OPTION_SETTING_OFS1_LENGTH = 0x00000004
+       0        0        0     1 OPTION_SETTING_BANKSEL_START = 0x0100a190
+       0        0        0     1 OPTION_SETTING_BANKSEL_LENGTH = 0x00000004
+       0        0        0     1 OPTION_SETTING_BPS_START = 0x0100a1c0
+       0        0        0     1 OPTION_SETTING_BPS_LENGTH = 0x00000010
+       0        0        0     1 OPTION_SETTING_PBPS_START = 0x0100a1e0
+       0        0        0     1 OPTION_SETTING_PBPS_LENGTH = 0x00000010
+       0        0        0     1 OPTION_SETTING_OFS1_SEC_START = 0x0100a200
+       0        0        0     1 OPTION_SETTING_OFS1_SEC_LENGTH = 0x00000004
+       0        0        0     1 OPTION_SETTING_BANKSEL_SEC_START = 0x0100a210
+       0        0        0     1 OPTION_SETTING_BANKSEL_SEC_LENGTH = 0x00000004
+       0        0        0     1 OPTION_SETTING_BPS_SEC_START = 0x0100a240
+       0        0        0     1 OPTION_SETTING_BPS_SEC_LENGTH = 0x00000010
+       0        0        0     1 OPTION_SETTING_PBPS_SEC_START = 0x0100a260
+       0        0        0     1 OPTION_SETTING_PBPS_SEC_LENGTH = 0x00000010
+       0        0        0     1 OPTION_SETTING_OFS1_SEL_START = 0x0100a280
+       0        0        0     1 OPTION_SETTING_OFS1_SEL_LENGTH = 0x00000004
+       0        0        0     1 OPTION_SETTING_BANKSEL_SEL_START = 0x0100a290
+       0        0        0     1 OPTION_SETTING_BANKSEL_SEL_LENGTH = 0x00000004
+       0        0        0     1 OPTION_SETTING_BPS_SEL_START = 0x0100a2c0
+       0        0        0     1 OPTION_SETTING_BPS_SEL_LENGTH = 0x00000010
+60000000 60000000        0     1 .qspi_flash.startof
+60000000 60000000        0     1         __ddsc_QSPI_FLASH_START = . 
+68000000 68000000        0     1 .ospi0_cs0.startof
+68000000 68000000        0     1         __ddsc_OSPI0_CS0_START = . 
+68000000 68000000        0     1 __ospi0_cs0_from_qspi_flash$$
+68000000 68000000        0     1         __ospi0_cs0_from_qspi_flash$$Base = . 
+68000000 68000000        0     1         __ospi0_cs0_from_qspi_flash$$Load = LOADADDR(__ospi0_cs0_from_qspi_flash$$) 
+68000000 68000000        0     1         __ospi0_cs0_from_qspi_flash$$Limit = . 
+20000000 20000000        0     1 .ram.startof
+20000000 20000000        0     1         __ddsc_RAM_START = . 
+20000000 20000000        0     1 __ram_dtc_vector$$
+20000000 20000000        0     1         __ram_dtc_vector$$Base = . 
+20000000 20000000        0     1         __ram_dtc_vector$$Limit = . 
+20000000 20000000        0     1 __ram_from_qspi_flash$$
+20000000 20000000        0     1         __ram_from_qspi_flash$$Base = . 
+20000000 20000000        0     1         __ram_from_qspi_flash$$Load = LOADADDR(__ram_from_qspi_flash$$) 
+20000000 20000000        0     1         __ram_from_qspi_flash$$Limit = . 
+60000000 60000000        0     1 __qspi_flash_readonly$$
+60000000 60000000        0     1         __qspi_flash_readonly$$Base = . 
+60000000 60000000        0     1         __qspi_flash_readonly$$Limit = . 
+60000000 60000000        0     1 __qspi_flash_noinit$$
+60000000 60000000        0     1         __qspi_flash_noinit$$Base = . 
+60000000 60000000        0     1         __qspi_flash_noinit$$Limit = . 
+60000000 60000000        0     1 .qspi_flash.endof
+60000000 60000000        0     1         __ddsc_QSPI_FLASH_END = . 
+70000000 70000000        0     1 .ospi0_cs1.startof
+70000000 70000000        0     1         __ddsc_OSPI0_CS1_START = . 
+68000000 68000000        0     1 __ospi0_cs0_from_ospi0_cs1$$
+68000000 68000000        0     1         __ospi0_cs0_from_ospi0_cs1$$Base = . 
+68000000 68000000        0     1         __ospi0_cs0_from_ospi0_cs1$$Load = LOADADDR(__ospi0_cs0_from_ospi0_cs1$$) 
+68000000 68000000        0     1         __ospi0_cs0_from_ospi0_cs1$$Limit = . 
+20000000 20000000        0     1 __ram_from_ospi0_cs1$$
+20000000 20000000        0     1         __ram_from_ospi0_cs1$$Base = . 
+20000000 20000000        0     1         __ram_from_ospi0_cs1$$Load = LOADADDR(__ram_from_ospi0_cs1$$) 
+20000000 20000000        0     1         __ram_from_ospi0_cs1$$Limit = . 
+70000000 70000000        0     1 __ospi0_cs1_readonly$$
+70000000 70000000        0     1         __ospi0_cs1_readonly$$Base = . 
+70000000 70000000        0     1         __ospi0_cs1_readonly$$Limit = . 
+70000000 70000000        0     1 __ospi0_cs1_noinit$$
+70000000 70000000        0     1         __ospi0_cs1_noinit$$Base = . 
+70000000 70000000        0     1         __ospi0_cs1_noinit$$Limit = . 
+70000000 70000000        0     1 .ospi0_cs1.endof
+70000000 70000000        0     1         __ddsc_OSPI0_CS1_END = . 
+ 8000000  8000000        0     1 .data_flash.startof
+ 8000000  8000000        0     1         __ddsc_DATA_FLASH_START = . 
+68000000 68000000        0     1 __ospi0_cs0_from_data_flash$$
+68000000 68000000        0     1         __ospi0_cs0_from_data_flash$$Base = . 
+68000000 68000000        0     1         __ospi0_cs0_from_data_flash$$Load = LOADADDR(__ospi0_cs0_from_data_flash$$) 
+68000000 68000000        0     1         __ospi0_cs0_from_data_flash$$Limit = . 
+20000000 20000000        0     1 __ram_from_data_flash$$
+20000000 20000000        0     1         __ram_from_data_flash$$Base = . 
+20000000 20000000        0     1         __ram_from_data_flash$$Load = LOADADDR(__ram_from_data_flash$$) 
+20000000 20000000        0     1         __ram_from_data_flash$$Limit = . 
+ 8000000  8000000        0     1 __data_flash_readonly$$
+ 8000000  8000000        0     1         __data_flash_readonly$$Base = . 
+ 8000000  8000000        0     1         __data_flash_readonly$$Limit = . 
+ 8000000  8000000        0     1 __data_flash_noinit$$
+ 8000000  8000000        0     1         __data_flash_noinit$$Base = . 
+ 8000000  8000000        0     1         __data_flash_noinit$$Limit = . 
+ 8000000  8000000        0     1 .data_flash.endof
+ 8000000  8000000        0     1         __ddsc_DATA_FLASH_END = . 
+       0        0        0     1 .flash.startof
+       0        0        0     1         __ddsc_FLASH_START = . 
+       0        0       40     4 __flash_vectors$$
+       0        0        0     1         __flash_vectors$$Base = . 
+       0        0        0     1         _VECTORS = . 
+       0        0       40     4         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/startup.c.obj:(.fixed_vectors)
+       0        0       40     1                 __Vectors
+      40       40        0     1         __flash_vectors$$Limit = . 
+      40       40        0     1 __flash_noinit$$
+      40       40        0     1         __flash_noinit$$Base = . 
+      40       40        0     1         __flash_noinit$$Limit = . 
+68000000 68000000        0     1 __ospi0_cs0_from_flash$$
+68000000 68000000        0     1         __ospi0_cs0_from_flash$$Base = . 
+68000000 68000000        0     1         __ospi0_cs0_from_flash$$Load = LOADADDR(__ospi0_cs0_from_flash$$) 
+68000000 68000000        0     1         __ospi0_cs0_from_flash$$Limit = . 
+68000000 68000000        0     1 __ospi0_cs0_noinit_nocache$$
+68000000 68000000        0     1         __ospi0_cs0_noinit_nocache$$Base = . 
+68000000 68000000        0     1         __ospi0_cs0_noinit_nocache$$Limit = . 
+68000000 68000000        0     1 __ospi0_cs0_zero_nocache$$
+68000000 68000000        0     1         __ospi0_cs0_zero_nocache$$Base = . 
+68000000 68000000        0     1         . = ALIGN(32)
+68000000 68000000        0     1         __ospi0_cs0_zero_nocache$$Limit = . 
+68000000 68000000        0     1 __ospi0_cs0_noinit$$
+68000000 68000000        0     1         __ospi0_cs0_noinit$$Base = . 
+68000000 68000000        0     1         __ospi0_cs0_noinit$$Limit = . 
+68000000 68000000        0     1 __ospi0_cs0_zero$$
+68000000 68000000        0     1         __ospi0_cs0_zero$$Base = . 
+68000000 68000000        0     1         __ospi0_cs0_zero$$Limit = . 
+68000000 68000000        0     1 .ospi0_cs0.endof
+68000000 68000000        0     1         __ddsc_OSPI0_CS0_END = . 
+20000000 20000000        0     1 __ram_from_flash$$
+20000000 20000000        0     1         __ram_from_flash$$Base = . 
+20000000 20000000        0     1         __ram_from_flash$$Load = LOADADDR(__ram_from_flash$$) 
+20000000 20000000        0     1         __ram_from_flash$$Limit = . 
+20000000 20000000        0     1 __ram_noinit_nocache$$
+20000000 20000000        0     1         __ram_noinit_nocache$$Base = . 
+20000000 20000000        0     1         __ram_noinit_nocache$$Limit = . 
+20000000 20000000        0     1 __ram_zero_nocache$$
+20000000 20000000        0     1         __ram_zero_nocache$$Base = . 
+20000000 20000000        0     1         . = ALIGN(32)
+20000000 20000000        0     1         __ram_zero_nocache$$Limit = . 
+20000000 20000000      41c     8 __ram_noinit$$
+20000000 20000000        0     1         __ram_noinit$$Base = . 
+20000000 20000000      400     8         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/startup.c.obj:(.bss.g_main_stack)
+20000000 20000000      400     1                 g_main_stack
+20000400 20000400       1c     4         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_clocks.c.obj:(.ram_noinit)
+20000400 20000400       1c     1                 g_clock_freq
+2000041c 2000041c        0     1         __ram_noinit$$Limit = . 
+2000041c 2000041c       60     4 __ram_zero$$
+2000041c 2000041c        0     1         __ram_zero$$Base = . 
+2000041c 2000041c        4     4         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/system.c.obj:(.bss.SystemCoreClock)
+2000041c 2000041c        4     1                 SystemCoreClock
+20000420 20000420       40     4         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_group_irq.c.obj:(.bss.g_bsp_group_irq_sources)
+20000420 20000420       40     1                 g_bsp_group_irq_sources
+20000460 20000460        4     4         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_io.c.obj:(.bss.g_protect_pfswe_counter)
+20000460 20000460        4     1                 g_protect_pfswe_counter
+20000464 20000464        a     2         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_register_protection.c.obj:(.bss.g_protect_counters)
+20000464 20000464        a     1                 g_protect_counters
+20000470 20000470        8     4         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra_gen/common_data.c.obj:(.bss.g_ioport_ctrl)
+20000470 20000470        8     1                 g_ioport_ctrl
+20000478 20000478        4     4         C:\Users\z\.renesas\platform\arm-llvm\21.1.1\ATfE-21.1.1-Windows-x86_64\bin\..\lib\clang-runtimes/arm-none-eabi/armv8m.main_hard_fp_exn_rtti_unaligned_size\lib\libc.a(libc_picolib_machine_arm_tls.c.o):(.bss.__tls)
+20000478 20000478        4     1                 __tls
+2000047c 2000047c        0     1         __ram_zero$$Limit = . 
+2000047c 2000047c        0     1 __ram_tdata$$
+2000047c 2000047c        0     1         __ram_tdata$$Base = . 
+2000047c 2000047c        0     1         __ram_tdata$$Load = LOADADDR(__ram_tdata$$) 
+2000047c 2000047c        0     1         __ram_tdata$$Limit = . 
+2000047c 2000047c        0     1 __ram_tbss$$
+2000047c 2000047c        0     1         __ram_tbss$$Base = . 
+2000047c 2000047c        0     1         __ram_tbss$$Limit = . 
+20000480 20000480        0     1 __ram_thread_stack$$
+20000480 20000480        0     1         __ram_thread_stack$$Base = . 
+20000480 20000480        0     1         __ram_thread_stack$$Limit = . 
+20002000 20002000        0     1 .ram.endof
+20002000 20002000        0     1         __ddsc_RAM_END = . 
+20002000 20002000        0     1 .ram.flat_nsc
+20002000 20002000        0     1         __ddsc_RAM_NSC = . 
+      40       40      92a     4 __flash_readonly$$
+      40       40        0     1         __flash_readonly$$Base = . 
+      40       40        a     4         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/startup.c.obj:(.text.Reset_Handler)
+      40       40        0     1                 $t
+      41       41        a     1                 Reset_Handler
+      4c       4c        4     4         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/startup.c.obj:(.text.Default_Handler)
+      4c       4c        0     1                 $t
+      4d       4d        4     1                 Default_Handler
+      4d       4d        4     1                 HardFault_Handler
+      4d       4d        4     1                 MemManage_Handler
+      4d       4d        4     1                 BusFault_Handler
+      4d       4d        4     1                 UsageFault_Handler
+      4d       4d        4     1                 SecureFault_Handler
+      4d       4d        4     1                 SVC_Handler
+      4d       4d        4     1                 DebugMon_Handler
+      4d       4d        4     1                 PendSV_Handler
+      4d       4d        4     1                 SysTick_Handler
+      50       50      18c     4         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/system.c.obj:(.text.SystemInit)
+      50       50        0     1                 $t
+      51       51      18c     1                 SystemInit
+     1dc      1dc       2c     4         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_clocks.c.obj:(.text.SystemCoreClockUpdate)
+     1dc      1dc        0     1                 $t
+     1dd      1dd       2c     1                 SystemCoreClockUpdate
+     208      208      130     4         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_clocks.c.obj:(.text.bsp_clock_init)
+     208      208        0     1                 $t
+     209      209      130     1                 bsp_clock_init
+     338      338        2     4         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_clocks.c.obj:(.text.R_BSP_SubClockStabilizeWaitAfterReset)
+     338      338        0     1                 $t
+     339      339        2     1                 R_BSP_SubClockStabilizeWaitAfterReset
+     33c      33c       7a     4         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_clocks.c.obj:(.text.R_BSP_Init_RTC)
+     33c      33c        0     1                 $t
+     33d      33d       7a     1                 R_BSP_Init_RTC
+     3b8      3b8        2     4         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_common.c.obj:(.text.bsp_init_internal)
+     3b8      3b8        0     1                 $t
+     3b9      3b9        2     1                 bsp_init_internal
+     3b9      3b9        2     1                 bsp_init
+     3bc      3bc       86     4         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_delay.c.obj:(.text.R_BSP_SoftwareDelay)
+     3bc      3bc        0     1                 $t
+     3bd      3bd       86     1                 R_BSP_SoftwareDelay
+     444      444        8     4         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_delay.c.obj:(.text.bsp_prv_software_delay_loop)
+     444      444        0     1                 sw_delay_loop
+     444      444        0     1                 $t
+     445      445        8     1                 bsp_prv_software_delay_loop
+     44c      44c       4c     4         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_group_irq.c.obj:(.text.NMI_Handler)
+     44c      44c        0     1                 $t
+     44d      44d       4c     1                 NMI_Handler
+     498      498       70     4         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_irq.c.obj:(.text.bsp_irq_cfg)
+     498      498        0     1                 $t
+     499      499       70     1                 bsp_irq_cfg
+     508      508       58     4         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_register_protection.c.obj:(.text.R_BSP_RegisterProtectEnable)
+     508      508        0     1                 $t
+     509      509       58     1                 R_BSP_RegisterProtectEnable
+     560      560       4e     4         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_register_protection.c.obj:(.text.R_BSP_RegisterProtectDisable)
+     560      560        0     1                 $t
+     561      561       4e     1                 R_BSP_RegisterProtectDisable
+     5b0      5b0       16     4         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/r_ioport/r_ioport.c.obj:(.text.R_IOPORT_Open)
+     5b0      5b0        0     1                 $t
+     5b1      5b1       16     1                 R_IOPORT_Open
+     5c8      5c8       ca     4         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/r_ioport/r_ioport.c.obj:(.text.r_ioport_pins_config)
+     5c8      5c8        0     1                 $t
+     5c9      5c9       ca     1                 r_ioport_pins_config
+     694      694       d2     4         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/r_ioport/r_ioport.c.obj:(.text.bsp_vbatt_init)
+     694      694        0     1                 $t
+     695      695       d2     1                 bsp_vbatt_init
+     768      768        a     4         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra_gen/main.c.obj:(.text.main)
+     768      768        0     1                 $t
+     769      769        a     1                 main
+     774      774        2     4         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/src/hal_entry.c.obj:(.text.hal_entry)
+     774      774        0     1                 $t
+     775      775        2     1                 hal_entry
+     778      778       1a     4         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/src/hal_warmstart.c.obj:(.text.R_BSP_WarmStart)
+     778      778        0     1                 $t
+     779      779       1a     1                 R_BSP_WarmStart
+     792      792        8     2         C:\Users\z\.renesas\platform\arm-llvm\21.1.1\ATfE-21.1.1-Windows-x86_64\bin\..\lib\clang-runtimes/arm-none-eabi/armv8m.main_hard_fp_exn_rtti_unaligned_size\lib\libc.a(bzero.c.o):(.text.bzero)
+     792      792        0     1                 $t
+     793      793        8     1                 bzero
+     793      793        8     1                 __aeabi_memclr4
+     793      793        8     1                 __aeabi_memclr8
+     793      793        8     1                 __aeabi_memclr
+     79a      79a       12     2         C:\Users\z\.renesas\platform\arm-llvm\21.1.1\ATfE-21.1.1-Windows-x86_64\bin\..\lib\clang-runtimes/arm-none-eabi/armv8m.main_hard_fp_exn_rtti_unaligned_size\lib\libc.a(memcpy.c.o):(.text.memcpy)
+     79a      79a        0     1                 $t
+     79b      79b       12     1                 memcpy
+     79b      79b       12     1                 __aeabi_memcpy4
+     79b      79b       12     1                 __aeabi_memcpy8
+     79b      79b       12     1                 __aeabi_memcpy
+     7ac      7ac        e     2         C:\Users\z\.renesas\platform\arm-llvm\21.1.1\ATfE-21.1.1-Windows-x86_64\bin\..\lib\clang-runtimes/arm-none-eabi/armv8m.main_hard_fp_exn_rtti_unaligned_size\lib\libc.a(memset.c.o):(.text.memset)
+     7ac      7ac        0     1                 $t
+     7ad      7ad        e     1                 memset
+     7bc      7bc       28     4         C:\Users\z\.renesas\platform\arm-llvm\21.1.1\ATfE-21.1.1-Windows-x86_64\bin\..\lib\clang-runtimes/arm-none-eabi/armv8m.main_hard_fp_exn_rtti_unaligned_size\lib\libc.a(libc_picolib_inittls.c.o):(.text._init_tls)
+     7bc      7bc        0     1                 $t
+     7bd      7bd       28     1                 _init_tls
+     7d4      7d4        0     1                 $d
+     7e4      7e4       14     4         C:\Users\z\.renesas\platform\arm-llvm\21.1.1\ATfE-21.1.1-Windows-x86_64\bin\..\lib\clang-runtimes/arm-none-eabi/armv8m.main_hard_fp_exn_rtti_unaligned_size\lib\libc.a(libc_picolib_machine_arm_set_tls.c.o):(.text._set_tls)
+     7e4      7e4        0     1                 $t
+     7e5      7e5       14     1                 _set_tls
+     7f0      7f0        0     1                 $d
+     7f8      7f8        2     2         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_irq.c.obj:(.rodata.g_interrupt_event_link_select)
+     7f8      7f8        2     1                 g_interrupt_event_link_select
+     7fa      7fa        a     2         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_register_protection.c.obj:(.rodata.g_prcr_masks)
+     7fa      7fa        a     1                 g_prcr_masks
+     804      804       10     4         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.c.obj:(.rodata.nocache_list)
+     804      804       10     1                 nocache_list
+     814      814       18     4         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.c.obj:(.rodata.g_init_info)
+     814      814       18     1                 g_init_info
+     82c      82c       3c     4         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.c.obj:(.rodata.zero_list)
+     82c      82c       3c     1                 zero_list
+     868      868       90     4         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.c.obj:(.rodata.copy_list)
+     868      868       90     1                 copy_list
+     8f8      8f8        6     2         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/r_ioport/r_ioport.c.obj:(.rodata.g_vbatt_pins_input)
+     8f8      8f8        6     1                 g_vbatt_pins_input
+     900      900       10     4         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra_gen/pin_data.c.obj:(.rodata.g_bsp_pin_cfg_data)
+     900      900       10     1                 g_bsp_pin_cfg_data
+     910      910        c     4         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra_gen/pin_data.c.obj:(.rodata.g_bsp_pin_cfg)
+     910      910        c     1                 g_bsp_pin_cfg
+     91c      91c       4e     4         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_common.c.obj:(.version)
+     91c      91c        4     1                 g_fsp_version
+     920      920        6     1                 g_fsp_version_string
+     926      926       44     1                 g_fsp_version_build_string
+     96a      96a        0     1         __flash_readonly$$Limit = . 
+     96a      96a        0     1 __flash_preinit_array$$
+     96a      96a        0     1         __preinit_array_start = . 
+     96a      96a        0     1         __preinit_array_end = . 
+     96a      96a        0     1 __flash_init_array$$
+     96a      96a        0     1         __init_array_start = . 
+     96a      96a        0     1         __init_array_end = . 
+     96a      96a        0     1 __flash_fini_array$$
+     96a      96a        0     1         __fini_array_start = . 
+     96a      96a        0     1         __fini_array_end = . 
+     96a      96a        0     1 __flash_arm.exidx$$
+     96a      96a        0     1         __exidx_start = . 
+     96a      96a        0     1         __exidx_end = . 
+    8000     8000        0     1 .flash.endof
+    8000     8000        0     1         __ddsc_FLASH_END = . 
+    8000     8000        0     1 .flash.flat_nsc
+    8000     8000        0     1         __ddsc_FLASH_NSC = . 
+ 100a100  100a100        0     1 .option_setting_ofs0.startof
+ 100a100  100a100        0     1         __ddsc_OPTION_SETTING_OFS0_START = . 
+ 100a100  100a100        4     4 __option_setting_ofs0_reg$$
+ 100a100  100a100        0     1         __option_setting_ofs0_reg$$Base = . 
+ 100a100  100a100        4     4         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.c.obj:(.option_setting_ofs0)
+ 100a100  100a100        4     1                 g_bsp_cfg_option_setting_ofs0
+ 100a104  100a104        0     1         __option_setting_ofs0_reg$$Limit = . 
+ 100a104  100a104        0     1 .option_setting_ofs0.endof
+ 100a104  100a104        0     1         __ddsc_OPTION_SETTING_OFS0_END = . 
+ 100a110  100a110        0     1 .option_setting_dualsel.startof
+ 100a110  100a110        0     1         __ddsc_OPTION_SETTING_DUALSEL_START = . 
+ 100a110  100a110        0     1 __option_setting_dualsel_reg$$
+ 100a110  100a110        0     1         __option_setting_dualsel_reg$$Base = . 
+ 100a110  100a110        0     1         __option_setting_dualsel_reg$$Limit = . 
+ 100a110  100a110        0     1 .option_setting_dualsel.endof
+ 100a110  100a110        0     1         __ddsc_OPTION_SETTING_DUALSEL_END = . 
+ 100a180  100a180        0     1 .option_setting_ofs1.startof
+ 100a180  100a180        0     1         __ddsc_OPTION_SETTING_OFS1_START = . 
+ 100a180  100a180        0     1 __option_setting_ofs1_reg$$
+ 100a180  100a180        0     1         __option_setting_ofs1_reg$$Base = . 
+ 100a180  100a180        0     1         __option_setting_ofs1_reg$$Limit = . 
+ 100a180  100a180        0     1 .option_setting_ofs1.endof
+ 100a180  100a180        0     1         __ddsc_OPTION_SETTING_OFS1_END = . 
+ 100a190  100a190        0     1 .option_setting_banksel.startof
+ 100a190  100a190        0     1         __ddsc_OPTION_SETTING_BANKSEL_START = . 
+ 100a190  100a190        0     1 __option_setting_banksel_reg$$
+ 100a190  100a190        0     1         __option_setting_banksel_reg$$Base = . 
+ 100a190  100a190        0     1         __option_setting_banksel_reg$$Limit = . 
+ 100a190  100a190        0     1 .option_setting_banksel.endof
+ 100a190  100a190        0     1         __ddsc_OPTION_SETTING_BANKSEL_END = . 
+ 100a1c0  100a1c0        0     1 .option_setting_bps.startof
+ 100a1c0  100a1c0        0     1         __ddsc_OPTION_SETTING_BPS_START = . 
+ 100a1c0  100a1c0        0     1 __option_setting_bps_reg$$
+ 100a1c0  100a1c0        0     1         __option_setting_bps_reg$$Base = . 
+ 100a1c0  100a1c0        0     1         __option_setting_bps_reg$$Limit = . 
+ 100a1c0  100a1c0        0     1 .option_setting_bps.endof
+ 100a1c0  100a1c0        0     1         __ddsc_OPTION_SETTING_BPS_END = . 
+ 100a1e0  100a1e0        0     1 .option_setting_pbps.startof
+ 100a1e0  100a1e0        0     1         __ddsc_OPTION_SETTING_PBPS_START = . 
+ 100a1e0  100a1e0        0     1 __option_setting_pbps_reg$$
+ 100a1e0  100a1e0        0     1         __option_setting_pbps_reg$$Base = . 
+ 100a1e0  100a1e0        0     1         __option_setting_pbps_reg$$Limit = . 
+ 100a1e0  100a1e0        0     1 .option_setting_pbps.endof
+ 100a1e0  100a1e0        0     1         __ddsc_OPTION_SETTING_PBPS_END = . 
+ 100a200  100a200        0     1 .option_setting_ofs1_sec.startof
+ 100a200  100a200        0     1         __ddsc_OPTION_SETTING_OFS1_SEC_START = . 
+ 100a200  100a200        4     4 __option_setting_ofs1_sec_reg$$
+ 100a200  100a200        0     1         __option_setting_ofs1_sec_reg$$Base = . 
+ 100a200  100a200        4     4         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.c.obj:(.option_setting_ofs1_sec)
+ 100a200  100a200        4     1                 g_bsp_cfg_option_setting_ofs1_sec
+ 100a204  100a204        0     1         __option_setting_ofs1_sec_reg$$Limit = . 
+ 100a204  100a204        0     1 .option_setting_ofs1_sec.endof
+ 100a204  100a204        0     1         __ddsc_OPTION_SETTING_OFS1_SEC_END = . 
+ 100a210  100a210        0     1 .option_setting_banksel_sec.startof
+ 100a210  100a210        0     1         __ddsc_OPTION_SETTING_BANKSEL_SEC_START = . 
+ 100a210  100a210        0     1 __option_setting_banksel_sec_reg$$
+ 100a210  100a210        0     1         __option_setting_banksel_sec_reg$$Base = . 
+ 100a210  100a210        0     1         __option_setting_banksel_sec_reg$$Limit = . 
+ 100a210  100a210        0     1 .option_setting_banksel_sec.endof
+ 100a210  100a210        0     1         __ddsc_OPTION_SETTING_BANKSEL_SEC_END = . 
+ 100a240  100a240        0     1 .option_setting_bps_sec.startof
+ 100a240  100a240        0     1         __ddsc_OPTION_SETTING_BPS_SEC_START = . 
+ 100a240  100a240        0     1 __option_setting_bps_sec_reg$$
+ 100a240  100a240        0     1         __option_setting_bps_sec_reg$$Base = . 
+ 100a240  100a240        0     1         __option_setting_bps_sec_reg$$Limit = . 
+ 100a240  100a240        0     1 .option_setting_bps_sec.endof
+ 100a240  100a240        0     1         __ddsc_OPTION_SETTING_BPS_SEC_END = . 
+ 100a260  100a260        0     1 .option_setting_pbps_sec.startof
+ 100a260  100a260        0     1         __ddsc_OPTION_SETTING_PBPS_SEC_START = . 
+ 100a260  100a260        0     1 __option_setting_pbps_sec_reg$$
+ 100a260  100a260        0     1         __option_setting_pbps_sec_reg$$Base = . 
+ 100a260  100a260        0     1         __option_setting_pbps_sec_reg$$Limit = . 
+ 100a260  100a260        0     1 .option_setting_pbps_sec.endof
+ 100a260  100a260        0     1         __ddsc_OPTION_SETTING_PBPS_SEC_END = . 
+ 100a280  100a280        0     1 .option_setting_ofs1_sel.startof
+ 100a280  100a280        0     1         __ddsc_OPTION_SETTING_OFS1_SEL_START = . 
+ 100a280  100a280        4     4 __option_setting_ofs1_sel_reg$$
+ 100a280  100a280        0     1         __option_setting_ofs1_sel_reg$$Base = . 
+ 100a280  100a280        4     4         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.c.obj:(.option_setting_ofs1_sel)
+ 100a280  100a280        4     1                 g_bsp_cfg_option_setting_ofs1_sel
+ 100a284  100a284        0     1         __option_setting_ofs1_sel_reg$$Limit = . 
+ 100a284  100a284        0     1 .option_setting_ofs1_sel.endof
+ 100a284  100a284        0     1         __ddsc_OPTION_SETTING_OFS1_SEL_END = . 
+ 100a290  100a290        0     1 .option_setting_banksel_sel.startof
+ 100a290  100a290        0     1         __ddsc_OPTION_SETTING_BANKSEL_SEL_START = . 
+ 100a290  100a290        0     1 __option_setting_banksel_sel_reg$$
+ 100a290  100a290        0     1         __option_setting_banksel_sel_reg$$Base = . 
+ 100a290  100a290        0     1         __option_setting_banksel_sel_reg$$Limit = . 
+ 100a290  100a290        0     1 .option_setting_banksel_sel.endof
+ 100a290  100a290        0     1         __ddsc_OPTION_SETTING_BANKSEL_SEL_END = . 
+ 100a2c0  100a2c0        0     1 .option_setting_bps_sel.startof
+ 100a2c0  100a2c0        0     1         __ddsc_OPTION_SETTING_BPS_SEL_START = . 
+ 100a2c0  100a2c0        0     1 __option_setting_bps_sel_reg$$
+ 100a2c0  100a2c0        0     1         __option_setting_bps_sel_reg$$Base = . 
+ 100a2c0  100a2c0        0     1         __option_setting_bps_sel_reg$$Limit = . 
+ 100a2c0  100a2c0        0     1 .option_setting_bps_sel.endof
+ 100a2c0  100a2c0        0     1         __ddsc_OPTION_SETTING_BPS_SEL_END = . 
+ 100a2c0  100a2c0        0     1 PROVIDE( __tls_base = ADDR(__ram_tdata$$) )
+ 100a2c0  100a2c0        0     1 PROVIDE( __tdata_source = LOADADDR(__ram_tdata$$) )
+ 100a2c0  100a2c0        0     1 PROVIDE( __tdata_size = SIZEOF(__ram_tdata$$) )
+ 100a2c0  100a2c0        0     1 PROVIDE( __tbss_offset = ADDR(__ram_tbss$$) - ADDR(__ram_tdata$$) )
+ 100a2c0  100a2c0        0     1 PROVIDE( __tbss_size = SIZEOF(__ram_tbss$$) )
+ 100a2c0  100a2c0        0     1 PROVIDE( __arm32_tls_tcb_offset = 8 )
+       0        0       3e     1 .ARM.attributes
+       0        0       3e     1         C:\Users\z\.renesas\platform\arm-llvm\21.1.1\ATfE-21.1.1-Windows-x86_64\bin\..\lib\clang-runtimes/arm-none-eabi/armv8m.main_hard_fp_exn_rtti_unaligned_size\lib\crt0.o:(.ARM.attributes)
+       0        0     159b     1 .debug_abbrev
+       0        0       a7     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/startup.c.obj:(.debug_abbrev)
+      a7       a7      209     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/system.c.obj:(.debug_abbrev)
+     2b0      2b0      2fc     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_clocks.c.obj:(.debug_abbrev)
+     5ac      5ac      149     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_common.c.obj:(.debug_abbrev)
+     6f5      6f5       ad     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_delay.c.obj:(.debug_abbrev)
+     7a2      7a2      1ff     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_group_irq.c.obj:(.debug_abbrev)
+     9a1      9a1       44     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_io.c.obj:(.debug_abbrev)
+     9e5      9e5      1a4     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_irq.c.obj:(.debug_abbrev)
+     b89      b89      221     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_register_protection.c.obj:(.debug_abbrev)
+     daa      daa       67     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_sbrk.c.obj:(.debug_abbrev)
+     e11      e11       a2     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.c.obj:(.debug_abbrev)
+     eb3      eb3      337     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/r_ioport/r_ioport.c.obj:(.debug_abbrev)
+    11ea     11ea      10d     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra_gen/common_data.c.obj:(.debug_abbrev)
+    12f7     12f7       4d     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra_gen/hal_data.c.obj:(.debug_abbrev)
+    1344     1344       3c     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra_gen/main.c.obj:(.debug_abbrev)
+    1380     1380       e6     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra_gen/pin_data.c.obj:(.debug_abbrev)
+    1466     1466       2f     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/src/hal_entry.c.obj:(.debug_abbrev)
+    1495     1495      106     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/src/hal_warmstart.c.obj:(.debug_abbrev)
+       0        0    133d2     1 .debug_info
+       0        0       b1     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/startup.c.obj:(.debug_info)
+      b1       b1      b1f     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/system.c.obj:(.debug_info)
+     bd0      bd0     5189     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_clocks.c.obj:(.debug_info)
+    5d59     5d59      596     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_common.c.obj:(.debug_info)
+    62ef     62ef      104     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_delay.c.obj:(.debug_info)
+    63f3     63f3      db4     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_group_irq.c.obj:(.debug_info)
+    71a7     71a7       43     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_io.c.obj:(.debug_info)
+    71ea     71ea     17c0     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_irq.c.obj:(.debug_info)
+    89aa     89aa     2ec3     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_register_protection.c.obj:(.debug_info)
+    b86d     b86d       5f     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_sbrk.c.obj:(.debug_info)
+    b8cc     b8cc      1ea     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.c.obj:(.debug_info)
+    bab6     bab6     5dfe     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/r_ioport/r_ioport.c.obj:(.debug_info)
+   118b4    118b4      bee     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra_gen/common_data.c.obj:(.debug_info)
+   124a2    124a2       3a     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra_gen/hal_data.c.obj:(.debug_info)
+   124dc    124dc       37     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra_gen/main.c.obj:(.debug_info)
+   12513    12513      49b     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra_gen/pin_data.c.obj:(.debug_info)
+   129ae    129ae       2f     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/src/hal_entry.c.obj:(.debug_info)
+   129dd    129dd      9f5     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/src/hal_warmstart.c.obj:(.debug_info)
+       0        0      19e     1 .debug_rnglists
+       0        0       17     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/startup.c.obj:(.debug_rnglists)
+      17       17       18     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/system.c.obj:(.debug_rnglists)
+      2f       2f       5c     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_clocks.c.obj:(.debug_rnglists)
+      8b       8b       1a     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_common.c.obj:(.debug_rnglists)
+      a5       a5       18     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_delay.c.obj:(.debug_rnglists)
+      bd       bd       17     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_group_irq.c.obj:(.debug_rnglists)
+      d4       d4       1a     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_irq.c.obj:(.debug_rnglists)
+      ee       ee       24     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_register_protection.c.obj:(.debug_rnglists)
+     112      112       8c     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/r_ioport/r_ioport.c.obj:(.debug_rnglists)
+       0        0     67a4     1 .debug_str_offsets
+       0        0       3c     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/startup.c.obj:(.debug_str_offsets)
+      3c       3c      344     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/system.c.obj:(.debug_str_offsets)
+     380      380     12a8     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_clocks.c.obj:(.debug_str_offsets)
+    1628     1628      464     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_common.c.obj:(.debug_str_offsets)
+    1a8c     1a8c       74     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_delay.c.obj:(.debug_str_offsets)
+    1b00     1b00      694     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_group_irq.c.obj:(.debug_str_offsets)
+    2194     2194       24     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_io.c.obj:(.debug_str_offsets)
+    21b8     21b8      94c     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_irq.c.obj:(.debug_str_offsets)
+    2b04     2b04      bac     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_register_protection.c.obj:(.debug_str_offsets)
+    36b0     36b0       2c     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_sbrk.c.obj:(.debug_str_offsets)
+    36dc     36dc       a0     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.c.obj:(.debug_str_offsets)
+    377c     377c     1ad8     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/r_ioport/r_ioport.c.obj:(.debug_str_offsets)
+    5254     5254      8bc     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra_gen/common_data.c.obj:(.debug_str_offsets)
+    5b10     5b10       1c     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra_gen/hal_data.c.obj:(.debug_str_offsets)
+    5b2c     5b2c       1c     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra_gen/main.c.obj:(.debug_str_offsets)
+    5b48     5b48      428     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra_gen/pin_data.c.obj:(.debug_str_offsets)
+    5f70     5f70       18     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/src/hal_entry.c.obj:(.debug_str_offsets)
+    5f88     5f88      81c     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/src/hal_warmstart.c.obj:(.debug_str_offsets)
+       0        0     a13c     1 .debug_str
+       0        0     a13c     1         <internal>:(.debug_str)
+       0        0      2a4     1 .debug_addr
+       0        0       1c     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/startup.c.obj:(.debug_addr)
+      1c       1c       34     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/system.c.obj:(.debug_addr)
+      50       50       90     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_clocks.c.obj:(.debug_addr)
+      e0       e0       20     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_common.c.obj:(.debug_addr)
+     100      100       20     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_delay.c.obj:(.debug_addr)
+     120      120       1c     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_group_irq.c.obj:(.debug_addr)
+     13c      13c        c     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_io.c.obj:(.debug_addr)
+     148      148       20     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_irq.c.obj:(.debug_addr)
+     168      168       2c     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_register_protection.c.obj:(.debug_addr)
+     194      194        c     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_sbrk.c.obj:(.debug_addr)
+     1a0      1a0       24     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.c.obj:(.debug_addr)
+     1c4      1c4       88     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/r_ioport/r_ioport.c.obj:(.debug_addr)
+     24c      24c       14     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra_gen/common_data.c.obj:(.debug_addr)
+     260      260        c     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra_gen/hal_data.c.obj:(.debug_addr)
+     26c      26c        c     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra_gen/main.c.obj:(.debug_addr)
+     278      278       10     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra_gen/pin_data.c.obj:(.debug_addr)
+     288      288        c     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/src/hal_entry.c.obj:(.debug_addr)
+     294      294       10     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/src/hal_warmstart.c.obj:(.debug_addr)
+       0        0       29     1 .comment
+       0        0       29     1         <internal>:(.comment)
+       0        0      50c     4 .debug_frame
+       0        0       34     4         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/startup.c.obj:(.debug_frame)
+      34       34       44     4         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/system.c.obj:(.debug_frame)
+      78       78      104     4         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_clocks.c.obj:(.debug_frame)
+     17c      17c       44     4         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_common.c.obj:(.debug_frame)
+     1c0      1c0       34     4         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_delay.c.obj:(.debug_frame)
+     1f4      1f4       44     4         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_group_irq.c.obj:(.debug_frame)
+     238      238       34     4         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_irq.c.obj:(.debug_frame)
+     26c      26c       3c     4         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_register_protection.c.obj:(.debug_frame)
+     2a8      2a8       2c     4         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_sbrk.c.obj:(.debug_frame)
+     2d4      2d4      158     4         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/r_ioport/r_ioport.c.obj:(.debug_frame)
+     42c      42c       24     4         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra_gen/common_data.c.obj:(.debug_frame)
+     450      450       24     4         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra_gen/hal_data.c.obj:(.debug_frame)
+     474      474       2c     4         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra_gen/main.c.obj:(.debug_frame)
+     4a0      4a0       24     4         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/src/hal_entry.c.obj:(.debug_frame)
+     4c4      4c4       24     4         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/src/hal_warmstart.c.obj:(.debug_frame)
+     4e8      4e8       24     4         C:\Users\z\.renesas\platform\arm-llvm\21.1.1\ATfE-21.1.1-Windows-x86_64\bin\..\lib\clang-runtimes/arm-none-eabi/armv8m.main_hard_fp_exn_rtti_unaligned_size\lib\libc.a(libc_picolib_machine_arm_read_tp.S.o):(.debug_frame)
+       0        0     19bb     1 .debug_line
+       0        0       bf     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/startup.c.obj:(.debug_line)
+      bf       bf      201     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/system.c.obj:(.debug_line)
+     2c0      2c0      561     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_clocks.c.obj:(.debug_line)
+     821      821      112     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_common.c.obj:(.debug_line)
+     933      933      14c     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_delay.c.obj:(.debug_line)
+     a7f      a7f      141     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_group_irq.c.obj:(.debug_line)
+     bc0      bc0       8e     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_io.c.obj:(.debug_line)
+     c4e      c4e       d3     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_irq.c.obj:(.debug_line)
+     d21      d21      130     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_register_protection.c.obj:(.debug_line)
+     e51      e51       b3     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_sbrk.c.obj:(.debug_line)
+     f04      f04       a7     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.c.obj:(.debug_line)
+     fab      fab      5cd     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/r_ioport/r_ioport.c.obj:(.debug_line)
+    1578     1578      102     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra_gen/common_data.c.obj:(.debug_line)
+    167a     167a       81     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra_gen/hal_data.c.obj:(.debug_line)
+    16fb     16fb       71     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra_gen/main.c.obj:(.debug_line)
+    176c     176c       c0     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra_gen/pin_data.c.obj:(.debug_line)
+    182c     182c       6e     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/src/hal_entry.c.obj:(.debug_line)
+    189a     189a      121     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/src/hal_warmstart.c.obj:(.debug_line)
+       0        0      f6d     1 .debug_line_str
+       0        0      f6d     1         <internal>:(.debug_line_str)
+       0        0      a3f     1 .debug_loclists
+       0        0      114     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/system.c.obj:(.debug_loclists)
+     114      114      21d     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_clocks.c.obj:(.debug_loclists)
+     331      331       1d     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_common.c.obj:(.debug_loclists)
+     34e      34e      107     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_delay.c.obj:(.debug_loclists)
+     455      455       35     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_group_irq.c.obj:(.debug_loclists)
+     48a      48a       17     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_irq.c.obj:(.debug_loclists)
+     4a1      4a1       55     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_register_protection.c.obj:(.debug_loclists)
+     4f6      4f6       1e     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_sbrk.c.obj:(.debug_loclists)
+     514      514      50d     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/r_ioport/r_ioport.c.obj:(.debug_loclists)
+     a21      a21       1e     1         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/src/hal_warmstart.c.obj:(.debug_loclists)
+       0        0     13c0     4 .symtab
+       0        0     13c0     4         <internal>:(.symtab)
+       0        0      925     1 .shstrtab
+       0        0      925     1         <internal>:(.shstrtab)
+       0        0     1a02     1 .strtab
+       0        0     1a02     1         <internal>:(.strtab)
+
+Cross Reference Table
+
+Symbol                                            File
+memcpy                                            C:\Users\z\.renesas\platform\arm-llvm\21.1.1\ATfE-21.1.1-Windows-x86_64\bin\..\lib\clang-runtimes/arm-none-eabi/armv8m.main_hard_fp_exn_rtti_unaligned_size\lib\libc.a(memcpy.c.o)
+                                                  C:\Users\z\.renesas\platform\arm-llvm\21.1.1\ATfE-21.1.1-Windows-x86_64\bin\..\lib\clang-runtimes/arm-none-eabi/armv8m.main_hard_fp_exn_rtti_unaligned_size\lib\crt0.o
+memset                                            C:\Users\z\.renesas\platform\arm-llvm\21.1.1\ATfE-21.1.1-Windows-x86_64\bin\..\lib\clang-runtimes/arm-none-eabi/armv8m.main_hard_fp_exn_rtti_unaligned_size\lib\libc.a(memset.c.o)
+                                                  C:\Users\z\.renesas\platform\arm-llvm\21.1.1\ATfE-21.1.1-Windows-x86_64\bin\..\lib\clang-runtimes/arm-none-eabi/armv8m.main_hard_fp_exn_rtti_unaligned_size\lib\crt0.o
+                                                  C:\Users\z\.renesas\platform\arm-llvm\21.1.1\ATfE-21.1.1-Windows-x86_64\bin\..\lib\clang-runtimes/arm-none-eabi/armv8m.main_hard_fp_exn_rtti_unaligned_size\lib\libc.a(bzero.c.o)
+_set_tls                                          C:\Users\z\.renesas\platform\arm-llvm\21.1.1\ATfE-21.1.1-Windows-x86_64\bin\..\lib\clang-runtimes/arm-none-eabi/armv8m.main_hard_fp_exn_rtti_unaligned_size\lib\libc.a(libc_picolib_machine_arm_set_tls.c.o)
+                                                  C:\Users\z\.renesas\platform\arm-llvm\21.1.1\ATfE-21.1.1-Windows-x86_64\bin\..\lib\clang-runtimes/arm-none-eabi/armv8m.main_hard_fp_exn_rtti_unaligned_size\lib\crt0.o
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/system.c.obj
+main                                              CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra_gen/main.c.obj
+                                                  C:\Users\z\.renesas\platform\arm-llvm\21.1.1\ATfE-21.1.1-Windows-x86_64\bin\..\lib\clang-runtimes/arm-none-eabi/armv8m.main_hard_fp_exn_rtti_unaligned_size\lib\crt0.o
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/startup.c.obj
+__tls_base                                        D:/Renesas/R7FA6M5BF3CFP/Digitally_Controlled_Power_Source\fsp_gen.lld:691
+                                                  C:\Users\z\.renesas\platform\arm-llvm\21.1.1\ATfE-21.1.1-Windows-x86_64\bin\..\lib\clang-runtimes/arm-none-eabi/armv8m.main_hard_fp_exn_rtti_unaligned_size\lib\crt0.o
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/system.c.obj
+Reset_Handler                                     CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/startup.c.obj
+SystemInit                                        CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/system.c.obj
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/startup.c.obj
+Default_Handler                                   CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/startup.c.obj
+g_main_stack                                      CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/startup.c.obj
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/system.c.obj
+__Vectors                                         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/startup.c.obj
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/system.c.obj
+NMI_Handler                                       CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_group_irq.c.obj
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/startup.c.obj
+HardFault_Handler                                 CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/startup.c.obj
+MemManage_Handler                                 CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/startup.c.obj
+BusFault_Handler                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/startup.c.obj
+UsageFault_Handler                                CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/startup.c.obj
+SecureFault_Handler                               CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/startup.c.obj
+SVC_Handler                                       CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/startup.c.obj
+DebugMon_Handler                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/startup.c.obj
+PendSV_Handler                                    CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/startup.c.obj
+SysTick_Handler                                   CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/startup.c.obj
+R_BSP_WarmStart                                   CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/src/hal_warmstart.c.obj
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/system.c.obj
+bsp_clock_init                                    CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_clocks.c.obj
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/system.c.obj
+g_init_info                                       CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.c.obj
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/system.c.obj
+__aeabi_memclr4                                   C:\Users\z\.renesas\platform\arm-llvm\21.1.1\ATfE-21.1.1-Windows-x86_64\bin\..\lib\clang-runtimes/arm-none-eabi/armv8m.main_hard_fp_exn_rtti_unaligned_size\lib\libc.a(bzero.c.o)
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/system.c.obj
+__aeabi_memcpy4                                   C:\Users\z\.renesas\platform\arm-llvm\21.1.1\ATfE-21.1.1-Windows-x86_64\bin\..\lib\clang-runtimes/arm-none-eabi/armv8m.main_hard_fp_exn_rtti_unaligned_size\lib\libc.a(memcpy.c.o)
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/system.c.obj
+SystemCoreClockUpdate                             CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_clocks.c.obj
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/system.c.obj
+R_BSP_Init_RTC                                    CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_clocks.c.obj
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/system.c.obj
+R_BSP_RegisterProtectDisable                      CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_register_protection.c.obj
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/system.c.obj
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_clocks.c.obj
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_irq.c.obj
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/r_ioport/r_ioport.c.obj
+R_BSP_RegisterProtectEnable                       CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_register_protection.c.obj
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/system.c.obj
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_clocks.c.obj
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_irq.c.obj
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/r_ioport/r_ioport.c.obj
+_init_tls                                         C:\Users\z\.renesas\platform\arm-llvm\21.1.1\ATfE-21.1.1-Windows-x86_64\bin\..\lib\clang-runtimes/arm-none-eabi/armv8m.main_hard_fp_exn_rtti_unaligned_size\lib\libc.a(libc_picolib_inittls.c.o)
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/system.c.obj
+__init_array_start                                D:/Renesas/R7FA6M5BF3CFP/Digitally_Controlled_Power_Source\fsp_gen.lld:403
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/system.c.obj
+__init_array_end                                  D:/Renesas/R7FA6M5BF3CFP/Digitally_Controlled_Power_Source\fsp_gen.lld:406
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/system.c.obj
+bsp_irq_cfg                                       CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_irq.c.obj
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/system.c.obj
+bsp_init                                          CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_common.c.obj
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/system.c.obj
+SystemCoreClock                                   CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/cmsis/Device/RENESAS/Source/system.c.obj
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_clocks.c.obj
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_delay.c.obj
+R_BSP_SoftwareDelay                               CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_delay.c.obj
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_clocks.c.obj
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/r_ioport/r_ioport.c.obj
+R_BSP_SubClockStabilizeWaitAfterReset             CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_clocks.c.obj
+bsp_init_internal                                 CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_common.c.obj
+bsp_prv_software_delay_loop                       CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_delay.c.obj
+g_bsp_group_irq_sources                           CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_group_irq.c.obj
+g_protect_pfswe_counter                           CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_io.c.obj
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/r_ioport/r_ioport.c.obj
+g_interrupt_event_link_select                     CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_irq.c.obj
+g_protect_counters                                CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/all/bsp_register_protection.c.obj
+__ospi0_cs0_noinit_nocache$$Base                  D:/Renesas/R7FA6M5BF3CFP/Digitally_Controlled_Power_Source\fsp_gen.lld:237
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.c.obj
+__ospi0_cs0_zero_nocache$$Limit                   D:/Renesas/R7FA6M5BF3CFP/Digitally_Controlled_Power_Source\fsp_gen.lld:249
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.c.obj
+__ram_noinit_nocache$$Base                        D:/Renesas/R7FA6M5BF3CFP/Digitally_Controlled_Power_Source\fsp_gen.lld:289
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.c.obj
+__ram_zero_nocache$$Limit                         D:/Renesas/R7FA6M5BF3CFP/Digitally_Controlled_Power_Source\fsp_gen.lld:301
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.c.obj
+__ospi0_cs0_zero_nocache$$Base                    D:/Renesas/R7FA6M5BF3CFP/Digitally_Controlled_Power_Source\fsp_gen.lld:245
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.c.obj
+__ospi0_cs0_zero$$Base                            D:/Renesas/R7FA6M5BF3CFP/Digitally_Controlled_Power_Source\fsp_gen.lld:262
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.c.obj
+__ospi0_cs0_zero$$Limit                           D:/Renesas/R7FA6M5BF3CFP/Digitally_Controlled_Power_Source\fsp_gen.lld:265
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.c.obj
+__ram_zero_nocache$$Base                          D:/Renesas/R7FA6M5BF3CFP/Digitally_Controlled_Power_Source\fsp_gen.lld:297
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.c.obj
+__ram_zero$$Base                                  D:/Renesas/R7FA6M5BF3CFP/Digitally_Controlled_Power_Source\fsp_gen.lld:317
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.c.obj
+__ram_zero$$Limit                                 D:/Renesas/R7FA6M5BF3CFP/Digitally_Controlled_Power_Source\fsp_gen.lld:321
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.c.obj
+__ram_tbss$$Base                                  D:/Renesas/R7FA6M5BF3CFP/Digitally_Controlled_Power_Source\fsp_gen.lld:335
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.c.obj
+__ram_tbss$$Limit                                 D:/Renesas/R7FA6M5BF3CFP/Digitally_Controlled_Power_Source\fsp_gen.lld:340
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.c.obj
+__ospi0_cs0_from_qspi_flash$$Base                 D:/Renesas/R7FA6M5BF3CFP/Digitally_Controlled_Power_Source\fsp_gen.lld:45
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.c.obj
+__ospi0_cs0_from_qspi_flash$$Limit                D:/Renesas/R7FA6M5BF3CFP/Digitally_Controlled_Power_Source\fsp_gen.lld:50
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.c.obj
+__ospi0_cs0_from_qspi_flash$$Load                 D:/Renesas/R7FA6M5BF3CFP/Digitally_Controlled_Power_Source\fsp_gen.lld:45
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.c.obj
+__ospi0_cs0_from_ospi0_cs1$$Base                  D:/Renesas/R7FA6M5BF3CFP/Digitally_Controlled_Power_Source\fsp_gen.lld:108
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.c.obj
+__ospi0_cs0_from_ospi0_cs1$$Limit                 D:/Renesas/R7FA6M5BF3CFP/Digitally_Controlled_Power_Source\fsp_gen.lld:113
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.c.obj
+__ospi0_cs0_from_ospi0_cs1$$Load                  D:/Renesas/R7FA6M5BF3CFP/Digitally_Controlled_Power_Source\fsp_gen.lld:108
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.c.obj
+__ospi0_cs0_from_data_flash$$Base                 D:/Renesas/R7FA6M5BF3CFP/Digitally_Controlled_Power_Source\fsp_gen.lld:160
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.c.obj
+__ospi0_cs0_from_data_flash$$Limit                D:/Renesas/R7FA6M5BF3CFP/Digitally_Controlled_Power_Source\fsp_gen.lld:165
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.c.obj
+__ospi0_cs0_from_data_flash$$Load                 D:/Renesas/R7FA6M5BF3CFP/Digitally_Controlled_Power_Source\fsp_gen.lld:160
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.c.obj
+__ospi0_cs0_from_flash$$Base                      D:/Renesas/R7FA6M5BF3CFP/Digitally_Controlled_Power_Source\fsp_gen.lld:227
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.c.obj
+__ospi0_cs0_from_flash$$Limit                     D:/Renesas/R7FA6M5BF3CFP/Digitally_Controlled_Power_Source\fsp_gen.lld:232
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.c.obj
+__ospi0_cs0_from_flash$$Load                      D:/Renesas/R7FA6M5BF3CFP/Digitally_Controlled_Power_Source\fsp_gen.lld:227
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.c.obj
+__ram_from_qspi_flash$$Base                       D:/Renesas/R7FA6M5BF3CFP/Digitally_Controlled_Power_Source\fsp_gen.lld:68
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.c.obj
+__ram_from_qspi_flash$$Limit                      D:/Renesas/R7FA6M5BF3CFP/Digitally_Controlled_Power_Source\fsp_gen.lld:73
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.c.obj
+__ram_from_qspi_flash$$Load                       D:/Renesas/R7FA6M5BF3CFP/Digitally_Controlled_Power_Source\fsp_gen.lld:68
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.c.obj
+__ram_from_ospi0_cs1$$Base                        D:/Renesas/R7FA6M5BF3CFP/Digitally_Controlled_Power_Source\fsp_gen.lld:120
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.c.obj
+__ram_from_ospi0_cs1$$Limit                       D:/Renesas/R7FA6M5BF3CFP/Digitally_Controlled_Power_Source\fsp_gen.lld:125
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.c.obj
+__ram_from_ospi0_cs1$$Load                        D:/Renesas/R7FA6M5BF3CFP/Digitally_Controlled_Power_Source\fsp_gen.lld:120
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.c.obj
+__ram_from_data_flash$$Base                       D:/Renesas/R7FA6M5BF3CFP/Digitally_Controlled_Power_Source\fsp_gen.lld:172
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.c.obj
+__ram_from_data_flash$$Limit                      D:/Renesas/R7FA6M5BF3CFP/Digitally_Controlled_Power_Source\fsp_gen.lld:177
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.c.obj
+__ram_from_data_flash$$Load                       D:/Renesas/R7FA6M5BF3CFP/Digitally_Controlled_Power_Source\fsp_gen.lld:172
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.c.obj
+__ram_from_flash$$Base                            D:/Renesas/R7FA6M5BF3CFP/Digitally_Controlled_Power_Source\fsp_gen.lld:277
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.c.obj
+__ram_from_flash$$Limit                           D:/Renesas/R7FA6M5BF3CFP/Digitally_Controlled_Power_Source\fsp_gen.lld:284
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.c.obj
+__ram_from_flash$$Load                            D:/Renesas/R7FA6M5BF3CFP/Digitally_Controlled_Power_Source\fsp_gen.lld:277
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.c.obj
+__ram_tdata$$Base                                 D:/Renesas/R7FA6M5BF3CFP/Digitally_Controlled_Power_Source\fsp_gen.lld:326
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.c.obj
+__ram_tdata$$Limit                                D:/Renesas/R7FA6M5BF3CFP/Digitally_Controlled_Power_Source\fsp_gen.lld:330
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.c.obj
+__ram_tdata$$Load                                 D:/Renesas/R7FA6M5BF3CFP/Digitally_Controlled_Power_Source\fsp_gen.lld:326
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/bsp/mcu/ra6m5/bsp_linker.c.obj
+R_IOPORT_Open                                     CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra/fsp/src/r_ioport/r_ioport.c.obj
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/src/hal_warmstart.c.obj
+g_ioport_ctrl                                     CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra_gen/common_data.c.obj
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/src/hal_warmstart.c.obj
+g_bsp_pin_cfg                                     CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra_gen/pin_data.c.obj
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra_gen/common_data.c.obj
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/src/hal_warmstart.c.obj
+hal_entry                                         CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/src/hal_entry.c.obj
+                                                  CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra_gen/main.c.obj
+g_bsp_pin_cfg_data                                CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/ra_gen/pin_data.c.obj
+bzero                                             C:\Users\z\.renesas\platform\arm-llvm\21.1.1\ATfE-21.1.1-Windows-x86_64\bin\..\lib\clang-runtimes/arm-none-eabi/armv8m.main_hard_fp_exn_rtti_unaligned_size\lib\libc.a(bzero.c.o)
+__aeabi_memclr8                                   C:\Users\z\.renesas\platform\arm-llvm\21.1.1\ATfE-21.1.1-Windows-x86_64\bin\..\lib\clang-runtimes/arm-none-eabi/armv8m.main_hard_fp_exn_rtti_unaligned_size\lib\libc.a(bzero.c.o)
+__aeabi_memclr                                    C:\Users\z\.renesas\platform\arm-llvm\21.1.1\ATfE-21.1.1-Windows-x86_64\bin\..\lib\clang-runtimes/arm-none-eabi/armv8m.main_hard_fp_exn_rtti_unaligned_size\lib\libc.a(bzero.c.o)
+                                                  C:\Users\z\.renesas\platform\arm-llvm\21.1.1\ATfE-21.1.1-Windows-x86_64\bin\..\lib\clang-runtimes/arm-none-eabi/armv8m.main_hard_fp_exn_rtti_unaligned_size\lib\libc.a(libc_picolib_inittls.c.o)
+__aeabi_memcpy8                                   C:\Users\z\.renesas\platform\arm-llvm\21.1.1\ATfE-21.1.1-Windows-x86_64\bin\..\lib\clang-runtimes/arm-none-eabi/armv8m.main_hard_fp_exn_rtti_unaligned_size\lib\libc.a(memcpy.c.o)
+__aeabi_memcpy                                    C:\Users\z\.renesas\platform\arm-llvm\21.1.1\ATfE-21.1.1-Windows-x86_64\bin\..\lib\clang-runtimes/arm-none-eabi/armv8m.main_hard_fp_exn_rtti_unaligned_size\lib\libc.a(memcpy.c.o)
+                                                  C:\Users\z\.renesas\platform\arm-llvm\21.1.1\ATfE-21.1.1-Windows-x86_64\bin\..\lib\clang-runtimes/arm-none-eabi/armv8m.main_hard_fp_exn_rtti_unaligned_size\lib\libc.a(libc_picolib_inittls.c.o)
+__tdata_source                                    D:/Renesas/R7FA6M5BF3CFP/Digitally_Controlled_Power_Source\fsp_gen.lld:692
+                                                  C:\Users\z\.renesas\platform\arm-llvm\21.1.1\ATfE-21.1.1-Windows-x86_64\bin\..\lib\clang-runtimes/arm-none-eabi/armv8m.main_hard_fp_exn_rtti_unaligned_size\lib\libc.a(libc_picolib_inittls.c.o)
+__tdata_size                                      D:/Renesas/R7FA6M5BF3CFP/Digitally_Controlled_Power_Source\fsp_gen.lld:693
+                                                  C:\Users\z\.renesas\platform\arm-llvm\21.1.1\ATfE-21.1.1-Windows-x86_64\bin\..\lib\clang-runtimes/arm-none-eabi/armv8m.main_hard_fp_exn_rtti_unaligned_size\lib\libc.a(libc_picolib_inittls.c.o)
+__tbss_offset                                     D:/Renesas/R7FA6M5BF3CFP/Digitally_Controlled_Power_Source\fsp_gen.lld:694
+                                                  C:\Users\z\.renesas\platform\arm-llvm\21.1.1\ATfE-21.1.1-Windows-x86_64\bin\..\lib\clang-runtimes/arm-none-eabi/armv8m.main_hard_fp_exn_rtti_unaligned_size\lib\libc.a(libc_picolib_inittls.c.o)
+__tbss_size                                       D:/Renesas/R7FA6M5BF3CFP/Digitally_Controlled_Power_Source\fsp_gen.lld:695
+                                                  C:\Users\z\.renesas\platform\arm-llvm\21.1.1\ATfE-21.1.1-Windows-x86_64\bin\..\lib\clang-runtimes/arm-none-eabi/armv8m.main_hard_fp_exn_rtti_unaligned_size\lib\libc.a(libc_picolib_inittls.c.o)
+__arm32_tls_tcb_offset                            D:/Renesas/R7FA6M5BF3CFP/Digitally_Controlled_Power_Source\fsp_gen.lld:696
+                                                  C:\Users\z\.renesas\platform\arm-llvm\21.1.1\ATfE-21.1.1-Windows-x86_64\bin\..\lib\clang-runtimes/arm-none-eabi/armv8m.main_hard_fp_exn_rtti_unaligned_size\lib\libc.a(libc_picolib_machine_arm_set_tls.c.o)
+__tls                                             C:\Users\z\.renesas\platform\arm-llvm\21.1.1\ATfE-21.1.1-Windows-x86_64\bin\..\lib\clang-runtimes/arm-none-eabi/armv8m.main_hard_fp_exn_rtti_unaligned_size\lib\libc.a(libc_picolib_machine_arm_tls.c.o)
+                                                  C:\Users\z\.renesas\platform\arm-llvm\21.1.1\ATfE-21.1.1-Windows-x86_64\bin\..\lib\clang-runtimes/arm-none-eabi/armv8m.main_hard_fp_exn_rtti_unaligned_size\lib\libc.a(libc_picolib_machine_arm_set_tls.c.o)
+                                                  C:\Users\z\.renesas\platform\arm-llvm\21.1.1\ATfE-21.1.1-Windows-x86_64\bin\..\lib\clang-runtimes/arm-none-eabi/armv8m.main_hard_fp_exn_rtti_unaligned_size\lib\libc.a(libc_picolib_machine_arm_read_tp.S.o)
