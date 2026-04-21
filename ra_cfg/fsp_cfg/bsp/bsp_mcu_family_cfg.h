@@ -116,10 +116,10 @@ extern "C" {
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 12) /* POEG2 */ | \
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 13) /* POEG1 */ | \
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 14) /* POEG0 */ | \
-            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 15) /* ADC1 */ | \
-            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 16) /* ADC0 */ | \
+            (((1 > 0) ? 0U : 1U) << 15) /* ADC1 */ | \
+            (((1 > 0) ? 0U : 1U) << 16) /* ADC0 */ | \
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 20) /* DAC */ | \
-            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 22) /* TSN */ | \
+            (((2 > 0) ? 0U : 1U) << 22) /* TSN */ | \
             0xffae07f0) /* Unused */
 #endif
 #ifndef BSP_TZ_CFG_PSARE
@@ -138,13 +138,13 @@ extern "C" {
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 28) /* GPT3 */ | \
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 29) /* GPT2 */ | \
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 30) /* GPT1 */ | \
-            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 31) /* GPT0 */ | \
+            (((1 > 0) ? 0U : 1U) << 31) /* GPT0 */ | \
             0x3f3ff8) /* Unused */
 #endif
 #ifndef BSP_TZ_CFG_MSSAR
 #define BSP_TZ_CFG_MSSAR (\
-            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 0) /* ELC */ | \
-            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 1) /* DTC_DMAC */ | \
+            (((1 > 0) ? 0U : 1U) << 0) /* ELC */ | \
+            (((2 > 0) ? 0U : 1U) << 1) /* DTC_DMAC */ | \
             0xfffffffc) /* Unused */
 #endif
 
@@ -252,7 +252,7 @@ extern "C" {
 #endif
 
             /* Set DTCSTSAR if the Secure program uses the DTC. */
-#if RA_NOT_DEFINED == RA_NOT_DEFINED
+#if 2 == RA_NOT_DEFINED
  #define BSP_TZ_CFG_DTC_USED (0U)
 #else
  #define BSP_TZ_CFG_DTC_USED (1U)

@@ -148,8 +148,8 @@ FSP Configuration
     R7FA6M5BF3CFP.pincfg -> g_bsp_pin_cfg
       AVCC0 88 ANALOG0_AVCC0 - - - - - - - - IO "Read only" - 
       AVSS0 89 ANALOG0_AVSS0 - - - - - - - - IO "Read only" - 
-      P000 100 - - - - Disabled - - "ADC0: AN000; ADC1: AN100; ICU0: IRQ06" - None - - 
-      P001 99 - - - - Disabled - - "ADC0: AN001; ADC1: AN101; ICU0: IRQ07" - None - - 
+      P000 100 ADC0_AN000 - - - "Analog mode" - None "ADC0: AN000; ADC1: AN100; ICU0: IRQ06" - IO - - 
+      P001 99 ADC1_AN101 - - - "Analog mode" - None "ADC0: AN001; ADC1: AN101; ICU0: IRQ07" - IO - - 
       P002 98 - - - - Disabled - - "ADC0: AN002; ADC1: AN102; ICU0: IRQ08" - None - - 
       P003 97 - - - - Disabled - - "ADC0: AN003" - None - - 
       P004 96 - - - - Disabled - - "ADC0: AN004; ICU0: IRQ09" - None - - 
@@ -325,26 +325,26 @@ FSP Configuration
       Extra Features: ADC Trigger: Start Event Trigger (Channels with GTINTAD only): 
       Extra Features: ADC Trigger: ADC A Compare Match (Raw Counts): 0
       Extra Features: ADC Trigger: ADC B Compare Match (Raw Counts): 0
-      Extra Features: Dead Time (Value range varies with Channel): Dead Time Count Up (Raw Counts): 0
-      Extra Features: Dead Time (Value range varies with Channel): Dead Time Count Down (Raw Counts) (Channels with GTDVD only): 0
+      Extra Features: Dead Time (Value range varies with Channel): Dead Time Count Up (Raw Counts): 30
+      Extra Features: Dead Time (Value range varies with Channel): Dead Time Count Down (Raw Counts) (Channels with GTDVD only): 30
       Extra Features: Interrupt Skipping (Channels with GTITC only): Interrupt to Count: None
       Extra Features: Interrupt Skipping (Channels with GTITC only): Interrupt Skip Count: 0
       Extra Features: Interrupt Skipping (Channels with GTITC only): Skip ADC Events: None
       Extra Features: Output Disable: GTIOCA Disable Setting: Disable Prohibited
       Extra Features: Output Disable: GTIOCB Disable Setting: Disable Prohibited
       
-    Instance "g_adc0 ADC (r_adc)"
-      General: Name: g_adc0
+    Instance "current_adc ADC (r_adc)"
+      General: Name: current_adc
       General: Unit: 0
       General: Resolution: 12-Bit
       General: Alignment: Right
       General: Clear after read: On
-      General: Mode: Single Scan
+      General: Mode: Group Scan
       General: Double-trigger: Disabled
       Input: Channel Scan Mask (channel availability varies by MCU): 
       Input: Group B Scan Mask (channel availability varies by MCU): 
-      Interrupts: Normal/Group A Trigger: Software
-      Interrupts: Group B Trigger: Disabled
+      Interrupts: Normal/Group A Trigger: GPT0 COUNTER OVERFLOW (Overflow)
+      Interrupts: Group B Trigger: GPT0 COUNTER UNDERFLOW (Underflow)
       Interrupts: Group Priority (Valid only in Group Scan Mode): Group A cannot interrupt Group B
       Input: Add/Average Count: Disabled
       Input: Reference Voltage control: VREFH0/VREFH
@@ -363,41 +363,41 @@ FSP Configuration
       Input: Window Compare: Window B: Comparison mode: Less Than or Outside Window
       Input: Window Compare: Window B: Lower Reference: 0
       Input: Window Compare: Window B: Upper Reference: 0
-      Interrupts: Callback: NULL
-      Interrupts: Scan End Interrupt Priority: Disabled
-      Interrupts: Scan End Group B Interrupt Priority: Disabled
+      Interrupts: Callback: cur_adc_cmp_callback
+      Interrupts: Scan End Interrupt Priority: Priority 4
+      Interrupts: Scan End Group B Interrupt Priority: Priority 4
       Interrupts: Window Compare A Interrupt Priority: Disabled
       Interrupts: Window Compare B Interrupt Priority: Disabled
       Extra: ADC Ring Buffer: Disabled
       
-    Instance "g_transfer0 Transfer (r_dtc) Disabled"
-      Name: g_transfer0
-      Mode: Normal
+    Instance "current_data_transfer Transfer (r_dtc) ADC0 SCAN END (End of A/D scanning operation)"
+      Name: current_data_transfer
+      Mode: Repeat
       Transfer Size: 2 Bytes
-      Destination Address Mode: Fixed
+      Destination Address Mode: Incremented
       Source Address Mode: Fixed
-      Repeat Area (Unused in Normal Mode): Source
+      Repeat Area (Unused in Normal Mode): Destination
       Interrupt Frequency: After all transfers have completed
-      Number of Transfers: 0
+      Number of Transfers: 2
       Number of Blocks (Valid only in Block Mode): 0
       Number of Transfer Descriptors: 1
-      Activation Source: Disabled
+      Activation Source: ADC0 SCAN END (End of A/D scanning operation)
       
     Instance "g_elc Event Link Controller (r_elc)"
       Name: g_elc
       
-    Instance "g_adc1 ADC (r_adc)"
-      General: Name: g_adc1
-      General: Unit: 0
+    Instance "voltage_adc ADC (r_adc)"
+      General: Name: voltage_adc
+      General: Unit: 1
       General: Resolution: 12-Bit
       General: Alignment: Right
       General: Clear after read: On
-      General: Mode: Single Scan
+      General: Mode: Group Scan
       General: Double-trigger: Disabled
       Input: Channel Scan Mask (channel availability varies by MCU): 
       Input: Group B Scan Mask (channel availability varies by MCU): 
-      Interrupts: Normal/Group A Trigger: Software
-      Interrupts: Group B Trigger: Disabled
+      Interrupts: Normal/Group A Trigger: GPT0 COUNTER OVERFLOW (Overflow)
+      Interrupts: Group B Trigger: GPT0 COUNTER UNDERFLOW (Underflow)
       Interrupts: Group Priority (Valid only in Group Scan Mode): Group A cannot interrupt Group B
       Input: Add/Average Count: Disabled
       Input: Reference Voltage control: VREFH0/VREFH
@@ -416,10 +416,23 @@ FSP Configuration
       Input: Window Compare: Window B: Comparison mode: Less Than or Outside Window
       Input: Window Compare: Window B: Lower Reference: 0
       Input: Window Compare: Window B: Upper Reference: 0
-      Interrupts: Callback: NULL
-      Interrupts: Scan End Interrupt Priority: Disabled
-      Interrupts: Scan End Group B Interrupt Priority: Disabled
+      Interrupts: Callback: vol_adc_cmp_callback
+      Interrupts: Scan End Interrupt Priority: Priority 4
+      Interrupts: Scan End Group B Interrupt Priority: Priority 4
       Interrupts: Window Compare A Interrupt Priority: Disabled
       Interrupts: Window Compare B Interrupt Priority: Disabled
       Extra: ADC Ring Buffer: Disabled
+      
+    Instance "voltage_adc_transfer Transfer (r_dtc) ADC1 SCAN END (End of A/D scanning operation)"
+      Name: voltage_adc_transfer
+      Mode: Repeat
+      Transfer Size: 2 Bytes
+      Destination Address Mode: Incremented
+      Source Address Mode: Fixed
+      Repeat Area (Unused in Normal Mode): Destination
+      Interrupt Frequency: After all transfers have completed
+      Number of Transfers: 2
+      Number of Blocks (Valid only in Block Mode): 0
+      Number of Transfer Descriptors: 1
+      Activation Source: ADC1 SCAN END (End of A/D scanning operation)
       

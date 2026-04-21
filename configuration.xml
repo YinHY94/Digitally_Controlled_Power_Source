@@ -313,8 +313,8 @@
       <property id="module.driver.timer.adc_trigger" value=""/>
       <property id="module.driver.timer.adc_a_compare_match" value="0"/>
       <property id="module.driver.timer.adc_b_compare_match" value="0"/>
-      <property id="module.driver.timer.dead_time_count_up" value="0"/>
-      <property id="module.driver.timer.dead_time_count_down" value="0"/>
+      <property id="module.driver.timer.dead_time_count_up" value="30"/>
+      <property id="module.driver.timer.dead_time_count_down" value="30"/>
       <property id="module.driver.timer.interrupt_skip.source" value="module.driver.timer.interrupt_skip.source.none"/>
       <property id="module.driver.timer.interrupt_skip.count" value="module.driver.timer.interrupt_skip.count.count_0"/>
       <property id="module.driver.timer.interrupt_skip.adc" value="module.driver.timer.interrupt_skip.skip_sources.interrupt_skip.adc.none"/>
@@ -322,17 +322,17 @@
       <property id="module.driver.timer.gtiocb_disable_setting" value="module.driver.timer.gtiocb_disable_setting.gtioc_disable_prohibited"/>
     </module>
     <module id="module.driver.adc_on_adc.1503434516">
-      <property id="module.driver.adc.name" value="g_adc0"/>
+      <property id="module.driver.adc.name" value="current_adc"/>
       <property id="module.driver.adc.unit" value="0"/>
       <property id="module.driver.adc.resolution" value="module.driver.adc.resolution.resolution_12_bit"/>
       <property id="module.driver.adc.alignment" value="module.driver.adc.alignment.alignment_right"/>
       <property id="module.driver.adc.clearing" value="module.driver.adc.clearing.clear_after_read_on"/>
-      <property id="module.driver.adc.mode" value="module.driver.adc.mode.mode_single_scan"/>
+      <property id="module.driver.adc.mode" value="module.driver.adc.mode.mode_group_scan"/>
       <property id="module.driver.adc.mode.dt" value="module.driver.adc.mode.dt.disabled"/>
       <property id="module.driver.adc.scan_mask" value=""/>
       <property id="module.driver.adc.scan_mask_group_b" value=""/>
-      <property id="module.driver.adc.trigger" value="enum.driver.adc.trigger.trigger_software"/>
-      <property id="module.driver.adc.trigger_group_b" value="_disabled"/>
+      <property id="module.driver.adc.trigger" value="_signal.event.gpt0.counter.overflow"/>
+      <property id="module.driver.adc.trigger_group_b" value="_signal.event.gpt0.counter.underflow"/>
       <property id="module.driver.adc.priority_group_a" value="module.driver.adc.priority_group_a.group_a_priority_off"/>
       <property id="module.driver.adc.add_average_count" value="module.driver.adc.add_average_count.add_off"/>
       <property id="module.driver.adc.adc_vref_control" value="module.driver.adc.adc_vref_control.vrefh"/>
@@ -351,41 +351,41 @@
       <property id="module.driver.adc.compare.window_b.mode" value="module.driver.adc.compare.window_b.mode.less_outside"/>
       <property id="module.driver.adc.compare.window_b.ref_lower" value="0"/>
       <property id="module.driver.adc.compare.window_b.ref_upper" value="0"/>
-      <property id="module.driver.adc.p_callback" value="NULL"/>
-      <property id="module.driver.adc.scan_end_ipl" value="_disabled"/>
-      <property id="module.driver.adc.scan_end_b_ipl" value="_disabled"/>
+      <property id="module.driver.adc.p_callback" value="cur_adc_cmp_callback"/>
+      <property id="module.driver.adc.scan_end_ipl" value="board.icu.common.irq.priority4"/>
+      <property id="module.driver.adc.scan_end_b_ipl" value="board.icu.common.irq.priority4"/>
       <property id="module.driver.adc.window_a_ipl" value="_disabled"/>
       <property id="module.driver.adc.window_b_ipl" value="_disabled"/>
       <property id="module.driver.adc.adbuf" value="module.driver.adc.adbuf.disabled"/>
     </module>
     <module id="module.driver.transfer_on_dtc.156785712">
-      <property id="module.driver.transfer.name" value="g_transfer0"/>
-      <property id="module.driver.transfer.mode" value="module.driver.transfer.mode.mode_normal"/>
+      <property id="module.driver.transfer.name" value="current_data_transfer"/>
+      <property id="module.driver.transfer.mode" value="module.driver.transfer.mode.mode_repeat"/>
       <property id="module.driver.transfer.size" value="module.driver.transfer.size.size_2_byte"/>
-      <property id="module.driver.transfer.dest_addr_mode" value="module.driver.transfer.dest_addr_mode.addr_mode_fixed"/>
+      <property id="module.driver.transfer.dest_addr_mode" value="module.driver.transfer.dest_addr_mode.addr_mode_incremented"/>
       <property id="module.driver.transfer.src_addr_mode" value="module.driver.transfer.src_addr_mode.addr_mode_fixed"/>
-      <property id="module.driver.transfer.repeat_area" value="module.driver.transfer.repeat_area.repeat_area_source"/>
+      <property id="module.driver.transfer.repeat_area" value="module.driver.transfer.repeat_area.repeat_area_destination"/>
       <property id="module.driver.transfer.interrupt" value="module.driver.transfer.interrupt.interrupt_end"/>
-      <property id="module.driver.transfer.length" value="0"/>
+      <property id="module.driver.transfer.length" value="2"/>
       <property id="module.driver.transfer.num_blocks" value="0"/>
       <property id="module.driver.transfer.number_of_descriptors" value="1"/>
-      <property id="module.driver.transfer.activation_source" value="_disabled"/>
+      <property id="module.driver.transfer.activation_source" value="_signal.event.adc0.scan.end"/>
     </module>
     <module id="module.driver.elc_on_elc.1490703848">
       <property id="module.driver.elc.name" value="g_elc"/>
     </module>
     <module id="module.driver.adc_on_adc.1845038103">
-      <property id="module.driver.adc.name" value="g_adc1"/>
-      <property id="module.driver.adc.unit" value="0"/>
+      <property id="module.driver.adc.name" value="voltage_adc"/>
+      <property id="module.driver.adc.unit" value="1"/>
       <property id="module.driver.adc.resolution" value="module.driver.adc.resolution.resolution_12_bit"/>
       <property id="module.driver.adc.alignment" value="module.driver.adc.alignment.alignment_right"/>
       <property id="module.driver.adc.clearing" value="module.driver.adc.clearing.clear_after_read_on"/>
-      <property id="module.driver.adc.mode" value="module.driver.adc.mode.mode_single_scan"/>
+      <property id="module.driver.adc.mode" value="module.driver.adc.mode.mode_group_scan"/>
       <property id="module.driver.adc.mode.dt" value="module.driver.adc.mode.dt.disabled"/>
       <property id="module.driver.adc.scan_mask" value=""/>
       <property id="module.driver.adc.scan_mask_group_b" value=""/>
-      <property id="module.driver.adc.trigger" value="enum.driver.adc.trigger.trigger_software"/>
-      <property id="module.driver.adc.trigger_group_b" value="_disabled"/>
+      <property id="module.driver.adc.trigger" value="_signal.event.gpt0.counter.overflow"/>
+      <property id="module.driver.adc.trigger_group_b" value="_signal.event.gpt0.counter.underflow"/>
       <property id="module.driver.adc.priority_group_a" value="module.driver.adc.priority_group_a.group_a_priority_off"/>
       <property id="module.driver.adc.add_average_count" value="module.driver.adc.add_average_count.add_off"/>
       <property id="module.driver.adc.adc_vref_control" value="module.driver.adc.adc_vref_control.vrefh"/>
@@ -404,12 +404,25 @@
       <property id="module.driver.adc.compare.window_b.mode" value="module.driver.adc.compare.window_b.mode.less_outside"/>
       <property id="module.driver.adc.compare.window_b.ref_lower" value="0"/>
       <property id="module.driver.adc.compare.window_b.ref_upper" value="0"/>
-      <property id="module.driver.adc.p_callback" value="NULL"/>
-      <property id="module.driver.adc.scan_end_ipl" value="_disabled"/>
-      <property id="module.driver.adc.scan_end_b_ipl" value="_disabled"/>
+      <property id="module.driver.adc.p_callback" value="vol_adc_cmp_callback"/>
+      <property id="module.driver.adc.scan_end_ipl" value="board.icu.common.irq.priority4"/>
+      <property id="module.driver.adc.scan_end_b_ipl" value="board.icu.common.irq.priority4"/>
       <property id="module.driver.adc.window_a_ipl" value="_disabled"/>
       <property id="module.driver.adc.window_b_ipl" value="_disabled"/>
       <property id="module.driver.adc.adbuf" value="module.driver.adc.adbuf.disabled"/>
+    </module>
+    <module id="module.driver.transfer_on_dtc.1273714784">
+      <property id="module.driver.transfer.name" value="voltage_adc_transfer"/>
+      <property id="module.driver.transfer.mode" value="module.driver.transfer.mode.mode_repeat"/>
+      <property id="module.driver.transfer.size" value="module.driver.transfer.size.size_2_byte"/>
+      <property id="module.driver.transfer.dest_addr_mode" value="module.driver.transfer.dest_addr_mode.addr_mode_incremented"/>
+      <property id="module.driver.transfer.src_addr_mode" value="module.driver.transfer.src_addr_mode.addr_mode_fixed"/>
+      <property id="module.driver.transfer.repeat_area" value="module.driver.transfer.repeat_area.repeat_area_destination"/>
+      <property id="module.driver.transfer.interrupt" value="module.driver.transfer.interrupt.interrupt_end"/>
+      <property id="module.driver.transfer.length" value="2"/>
+      <property id="module.driver.transfer.num_blocks" value="0"/>
+      <property id="module.driver.transfer.number_of_descriptors" value="1"/>
+      <property id="module.driver.transfer.activation_source" value="_signal.event.adc1.scan.end"/>
     </module>
     <context id="_hal.0">
       <stack module="module.driver.ioport_on_ioport.0"/>
@@ -418,6 +431,7 @@
       <stack module="module.driver.transfer_on_dtc.156785712"/>
       <stack module="module.driver.elc_on_elc.1490703848"/>
       <stack module="module.driver.adc_on_adc.1845038103"/>
+      <stack module="module.driver.transfer_on_dtc.1273714784"/>
     </context>
     <config id="config.driver.adc">
       <property id="config.driver.adc.param_checking_enable" value="config.driver.adc.param_checking_enable.bsp"/>
@@ -441,12 +455,20 @@
   </raModuleConfiguration>
   <raPinConfiguration>
     <pincfg active="true" name="R7FA6M5BF3CFP.pincfg" selected="true" symbol="g_bsp_pin_cfg">
+      <configSetting altId="adc0.an00.p000" configurationId="adc0.an00"/>
+      <configSetting altId="adc0.mode.custom" configurationId="adc0.mode"/>
+      <configSetting altId="adc1.an01.p001" configurationId="adc1.an01"/>
+      <configSetting altId="adc1.mode.custom" configurationId="adc1.mode"/>
       <configSetting altId="debug0.mode.swd" configurationId="debug0.mode"/>
       <configSetting altId="debug0.swclk.p300" configurationId="debug0.swclk"/>
       <configSetting altId="debug0.swdio.p108" configurationId="debug0.swdio"/>
       <configSetting altId="gpt0.gtioca.p415" configurationId="gpt0.gtioca"/>
       <configSetting altId="gpt0.gtiocb.p414" configurationId="gpt0.gtiocb"/>
       <configSetting altId="gpt0.mode.gtiocaorgtiocb.free" configurationId="gpt0.mode"/>
+      <configSetting altId="p000.asel" configurationId="p000"/>
+      <configSetting altId="p000.gpio_mode.gpio_mode_an" configurationId="p000.gpio_mode"/>
+      <configSetting altId="p001.asel" configurationId="p001"/>
+      <configSetting altId="p001.gpio_mode.gpio_mode_an" configurationId="p001.gpio_mode"/>
       <configSetting altId="p108.debug0.swdio" configurationId="p108"/>
       <configSetting altId="p108.gpio_mode.gpio_mode_peripheral" configurationId="p108.gpio_mode"/>
       <configSetting altId="p300.debug0.swclk" configurationId="p300"/>
