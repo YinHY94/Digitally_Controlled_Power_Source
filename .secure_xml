@@ -69,8 +69,8 @@
       <configSetting altId="adc1.an01.p001" configurationId="adc1.an01" isUsedByDriver="true" peripheral="ADC1"/>
       <configSetting altId="debug0.swclk.p300" configurationId="debug0.swclk" isUsedByDriver="true" peripheral="DEBUG0"/>
       <configSetting altId="debug0.swdio.p108" configurationId="debug0.swdio" isUsedByDriver="true" peripheral="DEBUG0"/>
-      <configSetting altId="gpt0.gtioca.p415" configurationId="gpt0.gtioca" isUsedByDriver="true" peripheral="GPT0"/>
-      <configSetting altId="gpt0.gtiocb.p414" configurationId="gpt0.gtiocb" isUsedByDriver="true" peripheral="GPT0"/>
+      <configSetting altId="gpt1.gtioca.p109" configurationId="gpt1.gtioca" isUsedByDriver="true" peripheral="GPT1"/>
+      <configSetting altId="gpt1.gtiocb.p110" configurationId="gpt1.gtiocb" isUsedByDriver="true" peripheral="GPT1"/>
     </pincfg>
   </raPinConfiguration>
 </raConfiguration>

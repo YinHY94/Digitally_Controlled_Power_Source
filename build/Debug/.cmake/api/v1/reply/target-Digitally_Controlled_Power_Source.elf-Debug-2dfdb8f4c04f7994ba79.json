@@ -291,7 +291,12 @@
 				21,
 				22,
 				23,
-				24
+				24,
+				25,
+				26,
+				27,
+				28,
+				29
 			]
 		}
 	],
@@ -525,7 +530,12 @@
 				21,
 				22,
 				23,
-				24
+				24,
+				25,
+				26,
+				27,
+				28,
+				29
 			]
 		}
 	],
@@ -636,6 +646,30 @@
 		{
 			"backtrace" : 3,
 			"compileGroupIndex" : 0,
+			"path" : "ra/fsp/src/r_adc/r_adc.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "ra/fsp/src/r_dtc/r_dtc.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "ra/fsp/src/r_elc/r_elc.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "ra/fsp/src/r_gpt/r_gpt.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
 			"path" : "ra/fsp/src/r_ioport/r_ioport.c",
 			"sourceGroupIndex" : 0
 		},
@@ -643,6 +677,12 @@
 			"backtrace" : 3,
 			"compileGroupIndex" : 0,
 			"path" : "ra_gen/common_data.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 3,
+			"compileGroupIndex" : 0,
+			"path" : "ra_gen/elc_data.c",
 			"sourceGroupIndex" : 0
 		},
 		{

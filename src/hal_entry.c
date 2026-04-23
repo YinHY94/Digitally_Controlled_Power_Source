@@ -1,5 +1,12 @@
 #include "hal_data.h"
 
+#include "output_control.h"
+#include "page.h"
+#include "keyboard.h"
+#include "oled.h"
+#include "pid_control.h"
+
+
 #if (1 == BSP_MULTICORE_PROJECT) && BSP_TZ_SECURE_BUILD
 bsp_ipc_semaphore_handle_t g_core_start_semaphore =
 {
@@ -14,6 +21,15 @@ bsp_ipc_semaphore_handle_t g_core_start_semaphore =
 void hal_entry(void)
 {
     /* TODO: add your own code here */
+R_GPT_Open(&adc_timer_ctrl, &adc_timer_cfg);
+R_GPT_Open(&output_timer_ctrl, &output_timer_cfg);
+
+R_GPT_Start(&adc_timer_ctrl);
+R_GPT_Start(&output_timer_ctrl);
+
+
+uint32_t duty_cycle_counts = 0; 
+R_GPT_DutyCycleSet(&output_timer_ctrl, duty_cycle_counts, GPT_IO_PIN_GTIOCA);
 
     /* Wake up 2nd core if this is first core and we are inside a multicore project. */
 #if (0 == _RA_CORE) && (1 == BSP_MULTICORE_PROJECT) && !BSP_TZ_NONSECURE_BUILD

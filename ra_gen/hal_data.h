@@ -4,13 +4,33 @@
 #include <stdint.h>
 #include "bsp_api.h"
 #include "common_data.h"
+#include "r_gpt.h"
+#include "r_timer_api.h"
 #include "r_dtc.h"
 #include "r_transfer_api.h"
 #include "r_adc.h"
 #include "r_adc_api.h"
-#include "r_gpt.h"
-#include "r_timer_api.h"
 FSP_HEADER
+/** Timer on GPT Instance. */
+extern const timer_instance_t oled_timer;
+
+/** Access the GPT instance using these structures when calling API functions directly (::p_api is not used). */
+extern gpt_instance_ctrl_t oled_timer_ctrl;
+extern const timer_cfg_t oled_timer_cfg;
+
+#ifndef oled_timer_callback
+void oled_timer_callback(timer_callback_args_t * p_args);
+#endif
+/** Timer on GPT Instance. */
+extern const timer_instance_t output_timer;
+
+/** Access the GPT instance using these structures when calling API functions directly (::p_api is not used). */
+extern gpt_instance_ctrl_t output_timer_ctrl;
+extern const timer_cfg_t output_timer_cfg;
+
+#ifndef NULL
+void NULL(timer_callback_args_t * p_args);
+#endif
 /* Transfer on DTC Instance. */
 extern const transfer_instance_t voltage_adc_transfer;
 
@@ -54,11 +74,11 @@ void cur_adc_cmp_callback(adc_callback_args_t * p_args);
 #define ADC_DMAC_CHANNELS_PER_BLOCK_NULL  0
 #endif
 /** Timer on GPT Instance. */
-extern const timer_instance_t output_timer;
+extern const timer_instance_t adc_timer;
 
 /** Access the GPT instance using these structures when calling API functions directly (::p_api is not used). */
-extern gpt_instance_ctrl_t output_timer_ctrl;
-extern const timer_cfg_t output_timer_cfg;
+extern gpt_instance_ctrl_t adc_timer_ctrl;
+extern const timer_cfg_t adc_timer_cfg;
 
 #ifndef NULL
 void NULL(timer_callback_args_t * p_args);

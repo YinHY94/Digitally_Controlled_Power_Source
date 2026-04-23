@@ -10,9 +10,9 @@
             .link[ELC_PERIPHERAL_GPT_G] = ELC_EVENT_NONE, /* No allocation */
             .link[ELC_PERIPHERAL_GPT_H] = ELC_EVENT_NONE, /* No allocation */
             .link[ELC_PERIPHERAL_ADC0] = ELC_EVENT_GPT0_COUNTER_OVERFLOW, /* GPT0 COUNTER OVERFLOW (Overflow) */
-            .link[ELC_PERIPHERAL_ADC0_B] = ELC_EVENT_GPT0_COUNTER_UNDERFLOW, /* GPT0 COUNTER UNDERFLOW (Underflow) */
+            .link[ELC_PERIPHERAL_ADC0_B] = ELC_EVENT_NONE, /* No allocation */
             .link[ELC_PERIPHERAL_ADC1] = ELC_EVENT_GPT0_COUNTER_OVERFLOW, /* GPT0 COUNTER OVERFLOW (Overflow) */
-            .link[ELC_PERIPHERAL_ADC1_B] = ELC_EVENT_GPT0_COUNTER_UNDERFLOW, /* GPT0 COUNTER UNDERFLOW (Underflow) */
+            .link[ELC_PERIPHERAL_ADC1_B] = ELC_EVENT_NONE, /* No allocation */
             .link[ELC_PERIPHERAL_DAC0] = ELC_EVENT_NONE, /* No allocation */
             .link[ELC_PERIPHERAL_DAC1] = ELC_EVENT_NONE, /* No allocation */
             .link[ELC_PERIPHERAL_IOPORT1] = ELC_EVENT_NONE, /* No allocation */
@@ -33,9 +33,7 @@
             uint32_t elcsarbc = UINT32_MAX;
 
             elcsarbc &=  ~(1U << ELC_PERIPHERAL_ADC0);
-            elcsarbc &=  ~(1U << ELC_PERIPHERAL_ADC0_B);
             elcsarbc &=  ~(1U << ELC_PERIPHERAL_ADC1);
-            elcsarbc &=  ~(1U << ELC_PERIPHERAL_ADC1_B);
 
     #if BSP_SECONDARY_CORE_BUILD
             /* Write the settings to ELCSARn Registers. */
@@ -48,9 +46,7 @@
  #else
             uint16_t elcsarbc[2] = {0xFFFFU, 0xFFFFU};
             elcsarbc[ELC_PERIPHERAL_ADC0 / 16U] &= (uint16_t) ~(1U << (ELC_PERIPHERAL_ADC0 % 16U));
-            elcsarbc[ELC_PERIPHERAL_ADC0_B / 16U] &= (uint16_t) ~(1U << (ELC_PERIPHERAL_ADC0_B % 16U));
             elcsarbc[ELC_PERIPHERAL_ADC1 / 16U] &= (uint16_t) ~(1U << (ELC_PERIPHERAL_ADC1 % 16U));
-            elcsarbc[ELC_PERIPHERAL_ADC1_B / 16U] &= (uint16_t) ~(1U << (ELC_PERIPHERAL_ADC1_B % 16U));
 
             /* Write the settings to ELCSARn Registers. */
             R_ELC->ELCSARA = 0xFFFEU;
