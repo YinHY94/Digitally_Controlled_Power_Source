@@ -1,38 +1,53 @@
 #include <oled.h>
-#include <main.h>
-#include <spi.h>
+#include "bsp_pin_cfg.h"
+#include "common_data.h"
+#include "hal/spi_hal.h"
+#include "hal_data.h"
+#include "r_ioport.h"
 #include <string.h>
 
 #define OLED_SPI hspi1
 
-uint8_t buffer[1024];
+uint8_t oled_buffer[1024];
 
-Screen screen={
-.Image=buffer,
+Screen g_screen={
+.Image=oled_buffer,
 .Lenth=OLED_LENTH,
 .Width=OLED_WIDTH/8,	
 .color=1,
 .font=&Font_6x8,
 };
 
+extern volatile uint8_t oled_spi_cmp;
+
+static void oled_spi_transmit(const uint8_t *data, const size_t size)
+{
+  while (!oled_spi_cmp)
+    {
+        ;
+    }  
+  oled_spi_cmp = 0;
+  spi_write(&oled_spi_ctrl, data, size);
+}
+
 static void OLED_Reset(void)
 {
-    HAL_GPIO_WritePin(OLED_RESET_GPIO_Port, OLED_RESET_Pin, GPIO_PIN_RESET);
-    HAL_Delay(10-1);
-    HAL_GPIO_WritePin(OLED_RESET_GPIO_Port, OLED_RESET_Pin, GPIO_PIN_SET);
-    HAL_Delay(10-1);
+  R_IOPORT_PinWrite(&g_ioport_ctrl, oled_reset, BSP_IO_LEVEL_LOW);  
+  R_BSP_SoftwareDelay(10, BSP_DELAY_UNITS_MILLISECONDS);
+  R_IOPORT_PinWrite(&g_ioport_ctrl, oled_reset, BSP_IO_LEVEL_HIGH);
+  R_BSP_SoftwareDelay(10, BSP_DELAY_UNITS_MILLISECONDS);
 }
 
 static void OLED_Command(uint8_t byte)
 {
-    HAL_GPIO_WritePin(OLED_DATA_CMD_GPIO_Port, OLED_DATA_CMD_Pin, GPIO_PIN_RESET);
-    HAL_SPI_Transmit(&OLED_SPI, (uint8_t *)&byte, 1, HAL_MAX_DELAY);
+    R_IOPORT_PinWrite(&g_ioport_ctrl,oled_dc, BSP_IO_LEVEL_LOW);
+    oled_spi_transmit((const uint8_t *)&byte, 1);
 }
 
 static void OLED_Data(uint8_t *buffer, size_t buff_size)
 {
-    HAL_GPIO_WritePin(OLED_DATA_CMD_GPIO_Port, OLED_DATA_CMD_Pin, GPIO_PIN_SET);
-    HAL_SPI_Transmit(&OLED_SPI, buffer, buff_size, HAL_MAX_DELAY);
+    R_IOPORT_PinWrite(&g_ioport_ctrl,oled_dc, BSP_IO_LEVEL_HIGH);
+    oled_spi_transmit(buffer, buff_size);
 }
 
 int Get_Triangle_Area(int x1,int y1,int x2,int y2,int x3,int y3){
@@ -45,7 +60,7 @@ void OLED_Init(void)
     OLED_Reset();
 
     // Wait for the screen to boot
-    HAL_Delay(100);
+    R_BSP_SoftwareDelay(100, BSP_DELAY_UNITS_MILLISECONDS);
 
     // Init OLED
     OLED_Command(0xAE); // Display off

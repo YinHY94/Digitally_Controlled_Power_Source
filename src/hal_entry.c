@@ -1,3 +1,6 @@
+#include "hal/adc_hal.h"
+#include "hal/dtc_hal.h"
+#include "hal/gpt_hal.h"
 #include "hal_data.h"
 
 #include "output_control.h"
@@ -6,6 +9,9 @@
 #include "oled.h"
 #include "pid_control.h"
 
+extern volatile uint8_t cur_cmp;
+extern volatile uint8_t vol_cmp;
+extern volatile uint8_t update_ui_state;
 
 #if (1 == BSP_MULTICORE_PROJECT) && BSP_TZ_SECURE_BUILD
 bsp_ipc_semaphore_handle_t g_core_start_semaphore =
@@ -21,15 +27,36 @@ bsp_ipc_semaphore_handle_t g_core_start_semaphore =
 void hal_entry(void)
 {
     /* TODO: add your own code here */
-R_GPT_Open(&adc_timer_ctrl, &adc_timer_cfg);
-R_GPT_Open(&output_timer_ctrl, &output_timer_cfg);
+    gpt_init(&system_timer_ctrl, &system_timer_cfg);
+    gpt_start(&system_timer_ctrl);
+    gpt_init(&output_timer_ctrl, &output_timer_cfg);
+    gpt_init(&adc_timer_ctrl, &adc_timer_cfg);
 
-R_GPT_Start(&adc_timer_ctrl);
-R_GPT_Start(&output_timer_ctrl);
+    adc_init();
+
+    dtc_init();
+    dtc_start();
 
 
-uint32_t duty_cycle_counts = 0; 
-R_GPT_DutyCycleSet(&output_timer_ctrl, duty_cycle_counts, GPT_IO_PIN_GTIOCA);
+    OLED_Init();
+    page_init();
+    output_state=0;
+
+    while (1)
+    {
+        if(pid_state&&output_state){
+            INA226_Read_All(&ina226,&current_data);
+            PID_Control(current_page->pid);
+            pid_state=0;
+        }
+        if(update_ui_state){
+            update_ui_state=0;
+            current_page->update_ui();
+            INA226_Read_All(&ina226,&current_data);
+        }
+        dispatch_for_keys(current_page->key_handlers);
+    }
+
 
     /* Wake up 2nd core if this is first core and we are inside a multicore project. */
 #if (0 == _RA_CORE) && (1 == BSP_MULTICORE_PROJECT) && !BSP_TZ_NONSECURE_BUILD

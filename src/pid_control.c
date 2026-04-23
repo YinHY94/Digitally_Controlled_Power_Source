@@ -1,8 +1,8 @@
 #include "pid_control.h"
 #include "output_control.h"
-#include "ina226.h"
+#include "hal_data.h"
 
-uint16_t current_ccr;
+uint32_t current_ccr;
 
 //PID结构体
 PID_Parameter Voltage_PID={
@@ -12,9 +12,8 @@ PID_Parameter Voltage_PID={
 .T=PID_T,
 .Max=MAX_CCR,
 .Min=0,
-.Tim=TIM1,
 .Target=12.0f,
-.Current=&pid_voltage,
+.Current=0,
 .Errer_Threshold=0.01f,
 };
 
@@ -25,9 +24,8 @@ PID_Parameter Current_PID={
 .T=PID_T,
 .Max=MAX_CCR,
 .Min=0,
-.Tim=TIM1,
 .Target=1.0f,
-.Current=&current_data.current,
+.Current=0,
 .Errer_Threshold=0.008f,
 };
 
@@ -38,9 +36,8 @@ PID_Parameter Power_PID={
 .T=PID_T,
 .Max=MAX_CCR,
 .Min=0,
-.Tim=TIM1,
 .Target=10.0f,
-.Current=&current_data.power,
+.Current=0,
 .Errer_Threshold=0.05f,
 };
 
@@ -48,7 +45,7 @@ PID_Parameter Power_PID={
 
 void PID_Control(PID_Parameter* pid){
 	pid->Errer[1] = pid->Errer[0];
-	pid->Errer[0] = pid->Target-*(pid->Current) ;
+	pid->Errer[0] = pid->Target-(pid->Current) ;
 	if(pid->Errer[0]>pid->Errer_Threshold || pid->Errer[0]<-pid->Errer_Threshold){
 		pid->Integral+=pid->Errer[0];
 		// PID 输出计算
@@ -61,8 +58,8 @@ void PID_Control(PID_Parameter* pid){
 			pid->Ret =pid->Min;
 			pid->Integral=0;
 		}
-			pid->Tim->CCR1=(uint16_t)pid->Ret;
-		current_ccr=pid->Tim->CCR1;
+		R_GPT_DutyCycleSet(&output_timer_ctrl, (uint32_t)pid->Ret, GPT_IO_PIN_GTIOCA);
+		current_ccr=(uint32_t)pid->Ret;
 	}
 }
 

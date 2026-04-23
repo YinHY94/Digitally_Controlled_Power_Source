@@ -9,27 +9,27 @@ uint8_t input_index=0;
 uint8_t dot_index=255;
 
 void input_page_update_ui(){   
-    OLED_Set_Font(&screen,&Font_6x8); 
+    OLED_Set_Font(&g_screen,&Font_6x8); 
     if(input_page.parent==&constant_votage_page){
-        OLED_Draw_Filled_Rectangle(&screen,90,8,119,15);
-        OLED_Set_Color(&screen,0);
-        OLED_Draw_String(&screen,90,8,input_buffer);
-        OLED_Draw_ASCII(&screen,120,8,'V');
+        OLED_Draw_Filled_Rectangle(&g_screen,90,8,119,15);
+        OLED_Set_Color(&g_screen,0);
+        OLED_Draw_String(&g_screen,90,8,input_buffer);
+        OLED_Draw_ASCII(&g_screen,120,8,'V');
     }
     else if(input_page.parent==&constant_current_page){
-        OLED_Draw_Filled_Rectangle(&screen,90,8,119,15);
-        OLED_Set_Color(&screen,0);
-        OLED_Draw_String(&screen,90,8,input_buffer);
-        OLED_Draw_ASCII(&screen,120,8,'A');
+        OLED_Draw_Filled_Rectangle(&g_screen,90,8,119,15);
+        OLED_Set_Color(&g_screen,0);
+        OLED_Draw_String(&g_screen,90,8,input_buffer);
+        OLED_Draw_ASCII(&g_screen,120,8,'A');
     }
     else if(input_page.parent==&constant_power_page){
-        OLED_Draw_Filled_Rectangle(&screen,78,8,108,15);
-        OLED_Set_Color(&screen,0);
-        OLED_Draw_String(&screen,78,8,input_buffer);
-        OLED_Draw_ASCII(&screen,109,8,'W');
+        OLED_Draw_Filled_Rectangle(&g_screen,78,8,108,15);
+        OLED_Set_Color(&g_screen,0);
+        OLED_Draw_String(&g_screen,78,8,input_buffer);
+        OLED_Draw_ASCII(&g_screen,109,8,'W');
     }
-    OLED_Set_Color(&screen,1);
-    OLED_Sendbuffer(&screen);
+    OLED_Set_Color(&g_screen,1);
+    OLED_Sendbuffer(&g_screen);
 }    
 
 static void press_the_enter_key_event(){

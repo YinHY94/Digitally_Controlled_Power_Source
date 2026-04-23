@@ -71,6 +71,19 @@
       <configSetting altId="debug0.swdio.p108" configurationId="debug0.swdio" isUsedByDriver="true" peripheral="DEBUG0"/>
       <configSetting altId="gpt1.gtioca.p109" configurationId="gpt1.gtioca" isUsedByDriver="true" peripheral="GPT1"/>
       <configSetting altId="gpt1.gtiocb.p110" configurationId="gpt1.gtiocb" isUsedByDriver="true" peripheral="GPT1"/>
+      <configSetting altId="p100.output.low" configurationId="p100"/>
+      <configSetting altId="p103.output.low" configurationId="p103"/>
+      <configSetting altId="p105.output.high" configurationId="p105"/>
+      <configSetting altId="p407.input" configurationId="p407"/>
+      <configSetting altId="p408.output.high" configurationId="p408"/>
+      <configSetting altId="p409.input" configurationId="p409"/>
+      <configSetting altId="p410.output.high" configurationId="p410"/>
+      <configSetting altId="p411.input" configurationId="p411"/>
+      <configSetting altId="p412.output.high" configurationId="p412"/>
+      <configSetting altId="p413.input" configurationId="p413"/>
+      <configSetting altId="p414.output.high" configurationId="p414"/>
+      <configSetting altId="spi1.mosi.p101" configurationId="spi1.mosi" isUsedByDriver="true" peripheral="SPI1"/>
+      <configSetting altId="spi1.rspck.p102" configurationId="spi1.rspck" isUsedByDriver="true" peripheral="SPI1"/>
     </pincfg>
   </raPinConfiguration>
 </raConfiguration>

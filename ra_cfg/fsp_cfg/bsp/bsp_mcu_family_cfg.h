@@ -81,7 +81,7 @@ extern "C" {
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 11) /* USBFS */ | \
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 15) /* ETHERC */ | \
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 16) /* OSPI */ | \
-            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 18) /* SPI1 */ | \
+            (((1 > 0) ? 0U : 1U) << 18) /* SPI1 */ | \
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 19) /* SPI0 */ | \
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 22) /* SCI9 */ | \
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 23) /* SCI8 */ | \
@@ -135,7 +135,7 @@ extern "C" {
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 25) /* GPT6 */ | \
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 26) /* GPT5 */ | \
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 27) /* GPT4 */ | \
-            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 28) /* GPT3 */ | \
+            (((1 > 0) ? 0U : 1U) << 28) /* GPT3 */ | \
             (((1 > 0) ? 0U : 1U) << 29) /* GPT2 */ | \
             (((1 > 0) ? 0U : 1U) << 30) /* GPT1 */ | \
             (((1 > 0) ? 0U : 1U) << 31) /* GPT0 */ | \

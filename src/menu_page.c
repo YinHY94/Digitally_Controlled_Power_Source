@@ -12,15 +12,15 @@ char* item[]={
 page main_menu_page;
 
 void main_menu_page_update_ui(){
-OLED_Clearbuffer(&screen);
-OLED_Set_Font(&screen,&Font_8x16);
-OLED_Draw_String(&screen,0,0,main_menu_page.item[0]);
-OLED_Draw_String(&screen,0,16,main_menu_page.item[1]);
-OLED_Draw_String(&screen,0,32,main_menu_page.item[2]);
-OLED_Set_Color(&screen,2);
-OLED_Draw_Filled_Rectangle(&screen,0,main_menu_page.current_num*16,screen.Lenth-1,main_menu_page.current_num*16+15);
-OLED_Set_Color(&screen,1);
-OLED_Sendbuffer(&screen);
+OLED_Clearbuffer(&g_screen);
+OLED_Set_Font(&g_screen,&Font_8x16);
+OLED_Draw_String(&g_screen,0,0,main_menu_page.item[0]);
+OLED_Draw_String(&g_screen,0,16,main_menu_page.item[1]);
+OLED_Draw_String(&g_screen,0,32,main_menu_page.item[2]);
+OLED_Set_Color(&g_screen,2);
+OLED_Draw_Filled_Rectangle(&g_screen,0,main_menu_page.current_num*16,g_screen.Lenth-1,main_menu_page.current_num*16+15);
+OLED_Set_Color(&g_screen,1);
+OLED_Sendbuffer(&g_screen);
 }
 
 

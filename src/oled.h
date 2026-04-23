@@ -16,7 +16,7 @@ uint8_t color; // 0: Black 1: White 2: Inverse
 const ASCIIFont* font;
 }Screen;
 
-extern Screen screen;
+extern Screen g_screen;
 
 void OLED_Init(void);
 void OLED_Sendbuffer(Screen* screen);

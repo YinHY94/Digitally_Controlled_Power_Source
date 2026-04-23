@@ -2,7 +2,6 @@
 #define __PID_CONTROL_H__
 
 #include <stdint.h>
-#include "tim.h"
 
 #define MAX_CCR  	1000-1
 #define MIN_CCR  	0
@@ -16,12 +15,11 @@ float T;
 uint16_t Max;
 uint16_t Min;
 float Target;
-float* Current;
+float Current;
 float Integral; 		
 float Errer[2]; 		
 float Ret;
-float Errer_Threshold;
-TIM_TypeDef* Tim;	
+float Errer_Threshold;	
 }PID_Parameter;
 
 

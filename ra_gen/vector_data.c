@@ -10,6 +10,11 @@
             [3] = gpt_counter_overflow_isr, /* GPT1 COUNTER OVERFLOW (Overflow) */
             [4] = gpt_counter_underflow_isr, /* GPT1 COUNTER UNDERFLOW (Underflow) */
             [5] = gpt_counter_overflow_isr, /* GPT2 COUNTER OVERFLOW (Overflow) */
+            [6] = spi_rxi_isr, /* SPI1 RXI (Receive buffer full) */
+            [7] = spi_txi_isr, /* SPI1 TXI (Transmit buffer empty) */
+            [8] = spi_tei_isr, /* SPI1 TEI (Transmission complete event) */
+            [9] = spi_eri_isr, /* SPI1 ERI (Error) */
+            [10] = gpt_counter_overflow_isr, /* GPT3 COUNTER OVERFLOW (Overflow) */
         };
         #if BSP_FEATURE_ICU_HAS_IELSR
         const bsp_interrupt_event_t g_interrupt_event_link_select[BSP_ICU_VECTOR_NUM_ENTRIES] =
@@ -20,6 +25,11 @@
             [3] = BSP_PRV_VECT_ENUM(EVENT_GPT1_COUNTER_OVERFLOW,GROUP3), /* GPT1 COUNTER OVERFLOW (Overflow) */
             [4] = BSP_PRV_VECT_ENUM(EVENT_GPT1_COUNTER_UNDERFLOW,GROUP4), /* GPT1 COUNTER UNDERFLOW (Underflow) */
             [5] = BSP_PRV_VECT_ENUM(EVENT_GPT2_COUNTER_OVERFLOW,GROUP5), /* GPT2 COUNTER OVERFLOW (Overflow) */
+            [6] = BSP_PRV_VECT_ENUM(EVENT_SPI1_RXI,GROUP6), /* SPI1 RXI (Receive buffer full) */
+            [7] = BSP_PRV_VECT_ENUM(EVENT_SPI1_TXI,GROUP7), /* SPI1 TXI (Transmit buffer empty) */
+            [8] = BSP_PRV_VECT_ENUM(EVENT_SPI1_TEI,GROUP0), /* SPI1 TEI (Transmission complete event) */
+            [9] = BSP_PRV_VECT_ENUM(EVENT_SPI1_ERI,GROUP1), /* SPI1 ERI (Error) */
+            [10] = BSP_PRV_VECT_ENUM(EVENT_GPT3_COUNTER_OVERFLOW,GROUP2), /* GPT3 COUNTER OVERFLOW (Overflow) */
         };
         #endif
         #endif
