@@ -1,6 +1,8 @@
 #include "hal/adc_hal.h"
 #include "hal/dtc_hal.h"
+#include "hal/elc_hal.h"
 #include "hal/gpt_hal.h"
+#include "hal/spi_hal.h"
 #include "hal_data.h"
 
 #include "output_control.h"
@@ -27,16 +29,17 @@ bsp_ipc_semaphore_handle_t g_core_start_semaphore =
 void hal_entry(void)
 {
     /* TODO: add your own code here */
+    elc_init();
     gpt_init(&system_timer_ctrl, &system_timer_cfg);
-    gpt_start(&system_timer_ctrl);
     gpt_init(&output_timer_ctrl, &output_timer_cfg);
     gpt_init(&adc_timer_ctrl, &adc_timer_cfg);
-
     adc_init();
-
     dtc_init();
-    dtc_start();
+    spi_init(&oled_spi_ctrl, &oled_spi_cfg);
 
+    elc_start();
+    gpt_start(&system_timer_ctrl);
+    dtc_start();
 
     OLED_Init();
     page_init();
@@ -44,15 +47,14 @@ void hal_entry(void)
 
     while (1)
     {
-        if(pid_state&&output_state){
-            INA226_Read_All(&ina226,&current_data);
+        if(cur_cmp && vol_cmp && output_state){
+            cur_cmp = 0 ;
+            vol_cmp = 0;
             PID_Control(current_page->pid);
-            pid_state=0;
         }
         if(update_ui_state){
             update_ui_state=0;
             current_page->update_ui();
-            INA226_Read_All(&ina226,&current_data);
         }
         dispatch_for_keys(current_page->key_handlers);
     }
