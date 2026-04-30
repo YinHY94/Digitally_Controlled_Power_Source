@@ -70,3 +70,9 @@
 11576	11777	7992422065236880	CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/src/callback.c.obj	3187f9af5013ced9
 11609	11885	7992422065564783	CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/src/oled.c.obj	54314b3465b6d74a
 11885	17260	7992422068325284	Digitally_Controlled_Power_Source.elf	bea2ee6489487e56
+4	124	7992426457157938	CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/src/hal_entry.c.obj	80d581b3ec7c22ac
+124	5802	7992426458329743	Digitally_Controlled_Power_Source.elf	bea2ee6489487e56
+17	129	7992426807241687	CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/src/hal_entry.c.obj	80d581b3ec7c22ac
+130	5592	7992426808374408	Digitally_Controlled_Power_Source.elf	bea2ee6489487e56
+16	137	7992428188691726	CMakeFiles/Digitally_Controlled_Power_Source.elf.dir/src/hal_entry.c.obj	80d581b3ec7c22ac
+138	5925	7992428189904320	Digitally_Controlled_Power_Source.elf	bea2ee6489487e56

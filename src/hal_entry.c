@@ -63,8 +63,8 @@ void hal_entry(void)
             update_ui_state=0;
             current_page->update_ui();
         }
-        Current_PID.Current=(current_adc_data_buffer.current[0]+current_adc_data_buffer.current[1])*3.3f/2048.0f;
-        Voltage_PID.Current=(current_adc_data_buffer.voltage[0]+current_adc_data_buffer.voltage[1])*3.3f/2048.0f;
+        Current_PID.Current=(current_adc_data_buffer.current[0]+current_adc_data_buffer.current[1])*3.3f/8192.0f;
+        Voltage_PID.Current=(current_adc_data_buffer.voltage[0]+current_adc_data_buffer.voltage[1])*3.3f/8192.0f;
 
         dispatch_for_keys(current_page->key_handlers);
     }
