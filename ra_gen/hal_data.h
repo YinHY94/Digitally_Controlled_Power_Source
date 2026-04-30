@@ -64,8 +64,8 @@ extern const timer_instance_t output_timer;
 extern gpt_instance_ctrl_t output_timer_ctrl;
 extern const timer_cfg_t output_timer_cfg;
 
-#ifndef NULL
-void NULL(timer_callback_args_t * p_args);
+#ifndef output_timer_callback
+void output_timer_callback(timer_callback_args_t * p_args);
 #endif
 /* Transfer on DTC Instance. */
 extern const transfer_instance_t voltage_adc_transfer;
@@ -86,7 +86,7 @@ void vol_adc_cmp_callback(adc_callback_args_t * p_args);
 #endif
 
 #ifndef NULL
-#define ADC_DMAC_CHANNELS_PER_BLOCK_NULL  0
+#define ADC_DMAC_CHANNELS_PER_BLOCK_NULL  1
 #endif
 /* Transfer on DTC Instance. */
 extern const transfer_instance_t current_adc_transfer;
@@ -107,7 +107,7 @@ void cur_adc_cmp_callback(adc_callback_args_t * p_args);
 #endif
 
 #ifndef NULL
-#define ADC_DMAC_CHANNELS_PER_BLOCK_NULL  0
+#define ADC_DMAC_CHANNELS_PER_BLOCK_NULL  1
 #endif
 /** Timer on GPT Instance. */
 extern const timer_instance_t adc_timer;
@@ -116,8 +116,8 @@ extern const timer_instance_t adc_timer;
 extern gpt_instance_ctrl_t adc_timer_ctrl;
 extern const timer_cfg_t adc_timer_cfg;
 
-#ifndef NULL
-void NULL(timer_callback_args_t * p_args);
+#ifndef adc_timer_callback
+void adc_timer_callback(timer_callback_args_t * p_args);
 #endif
 void hal_entry(void);
 void g_hal_init(void);

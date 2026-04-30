@@ -1,5 +1,5 @@
 #include "page.h"
-#include "ina226.h"
+ 
 #include "output_control.h"
 #include "oled.h"
 #include <stdio.h>
@@ -16,17 +16,17 @@ sprintf(buf,"Constant Votage Mode");
 OLED_Draw_String(&g_screen,0,0,buf);
 sprintf(buf,"Target Voltage:%.2fV",constant_votage_page.pid->Target);
 OLED_Draw_String(&g_screen,0,8,buf);
-sprintf(buf,"Current Vol:%.3fV",current_data.voltage);
+sprintf(buf,"Current Vol:%.3fV",Voltage_PID.Current);
 OLED_Draw_String(&g_screen,0,24,buf);
-if(current_data.current<=0.00f&&current_data.current>-0.001f){
+if(Current_PID.Current<=0.00f&&Current_PID.Current>-0.001f){
     sprintf(buf,"Current Cur:0.000A");
 }else
-    sprintf(buf,"Current Cur:%.3fA",current_data.current);
+    sprintf(buf,"Current Cur:%.3fA",Current_PID.Current);
 OLED_Draw_String(&g_screen,0,32,buf);
-if(current_data.power<=0.00f&&current_data.power>-0.001f){
+if((Current_PID.Current*Voltage_PID.Current)<=0.00f&&(Current_PID.Current*Voltage_PID.Current)>-0.001f){
     sprintf(buf,"Current Power:0.000W");
 }else
-    sprintf(buf,"Current Power:%.3fW",current_data.power);
+    sprintf(buf,"Current Power:%.3fW",(Current_PID.Current*Voltage_PID.Current));
 OLED_Draw_String(&g_screen,0,40,buf);
 if(output_state)
     OLED_Draw_String(&g_screen,0,48,"Output: ON");

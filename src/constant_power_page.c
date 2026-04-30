@@ -3,7 +3,7 @@
 #include "oled.h"
 #include <stdio.h>
 #include "pid_control.h"
-#include "ina226.h"
+ 
 
 
 page constant_power_page;
@@ -19,14 +19,19 @@ sprintf(buf,"Constant Power Mode");
 OLED_Draw_String(&g_screen,0,0,buf);
 sprintf(buf,"Target Power:%.3fW",constant_power_page.pid->Target);
 OLED_Draw_String(&g_screen,0,8,buf);
-sprintf(buf,"Current Vol:%.3fV",current_data.voltage);
+sprintf(buf,"Current Vol:%.3fV",Voltage_PID.Current);
 OLED_Draw_String(&g_screen,0,24,buf);
-if(current_data.current<=0.00f&&current_data.current>-0.001f){
-sprintf(buf,"Current Cur:0.000A");
-}else
-sprintf(buf,"Current Cur:%.3fA",current_data.current);
+if(Current_PID.Current<=0.00f&&Current_PID.Current>-0.001f)
+{
+    sprintf(buf,"Current Cur:0.000A");
+}
+else
+{
+    sprintf(buf,"Current Cur:%.3fA",Current_PID.Current);
+}
+
 OLED_Draw_String(&g_screen,0,32,buf);
-sprintf(buf,"Current Power:%.3fW",current_data.power);
+sprintf(buf,"Current Power:%.3fW",(Current_PID.Current*Voltage_PID.Current));
 OLED_Draw_String(&g_screen,0,40,buf);
 if(output_state)
     OLED_Draw_String(&g_screen,0,48,"Output: ON");

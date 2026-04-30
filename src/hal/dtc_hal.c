@@ -1,7 +1,9 @@
 #include "dtc_hal.h"
 #include "hal_data.h"
-#include "pid_control.h"
 #include "r_dtc.h"
+
+adc_data current_adc_data_buffer;
+
 
 void dtc_init(void)
 {
@@ -12,12 +14,12 @@ void dtc_init(void)
     err = R_DTC_Open(&voltage_adc_transfer_ctrl, &voltage_adc_transfer_cfg);
     assert(FSP_SUCCESS == err);
 
-    current_adc_transfer_cfg.p_info->p_dest= &Current_PID.Current;
+    current_adc_transfer_cfg.p_info->p_dest= current_adc_data_buffer.current;
     current_adc_transfer_cfg.p_info->p_src = (void const*) &R_ADC0->ADDR[0u];
     err = R_DTC_Reconfigure(&current_adc_transfer_ctrl, current_adc_transfer_cfg.p_info);
     assert(FSP_SUCCESS == err);
     
-    voltage_adc_transfer_cfg.p_info->p_dest= &Current_PID.Current;
+    voltage_adc_transfer_cfg.p_info->p_dest= current_adc_data_buffer.voltage;
     voltage_adc_transfer_cfg.p_info->p_src = (void const*) &R_ADC1->ADDR[1u];
     err = R_DTC_Reconfigure(&voltage_adc_transfer_ctrl, voltage_adc_transfer_cfg.p_info);
     assert(FSP_SUCCESS == err);

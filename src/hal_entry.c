@@ -14,6 +14,7 @@
 extern volatile uint8_t cur_cmp;
 extern volatile uint8_t vol_cmp;
 extern volatile uint8_t update_ui_state;
+extern adc_data current_adc_data_buffer;
 
 #if (1 == BSP_MULTICORE_PROJECT) && BSP_TZ_SECURE_BUILD
 bsp_ipc_semaphore_handle_t g_core_start_semaphore =
@@ -32,6 +33,7 @@ void hal_entry(void)
     elc_init();
     gpt_init(&system_timer_ctrl, &system_timer_cfg);
     gpt_init(&output_timer_ctrl, &output_timer_cfg);
+    gpt_init(&oled_timer_ctrl, &oled_timer_cfg);
     gpt_init(&adc_timer_ctrl, &adc_timer_cfg);
     adc_init();
     dtc_init();
@@ -39,11 +41,16 @@ void hal_entry(void)
 
     elc_start();
     gpt_start(&system_timer_ctrl);
+    
     dtc_start();
 
     OLED_Init();
     page_init();
     output_state=0;
+    gpt_start(&oled_timer_ctrl);
+
+    gpt_start(&adc_timer_ctrl);
+    adc_start();
 
     while (1)
     {
@@ -56,6 +63,9 @@ void hal_entry(void)
             update_ui_state=0;
             current_page->update_ui();
         }
+        Current_PID.Current=(current_adc_data_buffer.current[0]+current_adc_data_buffer.current[1])*3.3f/2048.0f;
+        Voltage_PID.Current=(current_adc_data_buffer.voltage[0]+current_adc_data_buffer.voltage[1])*3.3f/2048.0f;
+
         dispatch_for_keys(current_page->key_handlers);
     }
 

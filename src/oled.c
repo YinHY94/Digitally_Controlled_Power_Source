@@ -4,6 +4,7 @@
 #include "hal/spi_hal.h"
 #include "hal_data.h"
 #include "r_ioport.h"
+#include "ra/fsp/src/bsp/mcu/all/bsp_io.h"
 #include <string.h>
 
 #define OLED_SPI hspi1
@@ -27,6 +28,7 @@ static void oled_spi_transmit(const uint8_t *data, const size_t size)
         ;
     }  
   oled_spi_cmp = 0;
+  R_IOPORT_PinWrite(&g_ioport_ctrl, oled_cs, BSP_IO_LEVEL_LOW);
   spi_write(&oled_spi_ctrl, data, size);
 }
 
@@ -54,67 +56,127 @@ int Get_Triangle_Area(int x1,int y1,int x2,int y2,int x3,int y3){
 return x1*(y2-y3)+x2*(y3-y1)+x3*(y1-y2);
 }
 
+// void OLED_Init(void)
+// {
+//     // Reset OLED
+//     OLED_Reset();
+
+//     // Wait for the screen to boot
+//     R_BSP_SoftwareDelay(100, BSP_DELAY_UNITS_MILLISECONDS);
+
+//     // Init OLED
+//     OLED_Command(0xAE); // Display off
+
+//     OLED_Command(0x20); // Set Memory Addressing Mode
+//     // 0b00: Horizontal Addressing Mode
+//     // 0b01: Vertical Addressing Mode
+//     // 0b10: Page Addressing Mode (RESET)
+//     // 0b11: Invalid
+//     OLED_Command(0x00);
+
+//     OLED_Command(0xC8); // Set COM Output Scan Direction
+
+//     OLED_Command(0x21); // Setup column start and end address
+//     OLED_Command(0);
+//     OLED_Command(127);
+
+//     OLED_Command(0x22); // Setup page start and end address
+//     OLED_Command(0);
+//     OLED_Command(7);
+
+//     OLED_Command(0x40); // Set start line address
+
+//     OLED_Command(0x81); // Set contrast
+//     OLED_Command(0xFF);
+
+//     OLED_Command(0xA1); // Set segment re-map 0 to 127
+
+//     // OLED_Command(0xA7); // Set inverse color
+//     OLED_Command(0xA6); // Set normal color
+
+//     OLED_Command(0xA8); // Set multiplex ratio.
+//     OLED_Command(0x3F);
+
+//     OLED_Command(0xA4); // 0xa4,Output follows RAM content
+
+//     OLED_Command(0xD3); // Set display offset
+//     OLED_Command(0x00); // --- not offset
+
+//     OLED_Command(0xD5); // Set display clock divide ratio/oscillator frequency
+//     OLED_Command(0xF0); // Set divide ratio
+
+//     OLED_Command(0xD9); // Set pre-charge period
+//     OLED_Command(0x22);
+
+//     OLED_Command(0xDA); // Set com pins hardware configuration
+//     OLED_Command(0x12);
+
+//     OLED_Command(0xDB); // Set vcomh
+//     OLED_Command(0x20); // 0x20,0.77xVcc
+
+//     OLED_Command(0x8D); // Set DC-DC enable
+//     OLED_Command(0x14);
+//     OLED_Command(0xAF); // Display on
+// }
+
 void OLED_Init(void)
 {
-    // Reset OLED
+    // 1. 硬复位
     OLED_Reset();
 
-    // Wait for the screen to boot
+    // 2. 等待驱动芯片内部电路稳定
     R_BSP_SoftwareDelay(100, BSP_DELAY_UNITS_MILLISECONDS);
 
-    // Init OLED
-    OLED_Command(0xAE); // Display off
+    // 3. 进入初始化命令序列
+    OLED_Command(0xAE); // 关闭显示 (Display Off)
 
-    OLED_Command(0x20); // Set Memory Addressing Mode
-    // 0b00: Horizontal Addressing Mode
-    // 0b01: Vertical Addressing Mode
-    // 0b10: Page Addressing Mode (RESET)
-    // 0b11: Invalid
-    OLED_Command(0x00);
+    // --- 基础配置 ---
+    OLED_Command(0xD5); // 设置显示时钟分频
+    OLED_Command(0x80); // 建议值 0x80
 
-    OLED_Command(0xC8); // Set COM Output Scan Direction
+    OLED_Command(0xA8); // 设置多路复用率
+    OLED_Command(0x3F); // 1/64 Duty
 
-    OLED_Command(0x21); // Setup column start and end address
-    OLED_Command(0);
-    OLED_Command(127);
+    OLED_Command(0xD3); // 设置显示偏移
+    OLED_Command(0x00); // 无偏移
 
-    OLED_Command(0x22); // Setup page start and end address
-    OLED_Command(0);
-    OLED_Command(7);
+    OLED_Command(0x40); // 设置显示起始行 (Row 0)
 
-    OLED_Command(0x40); // Set start line address
+    // --- 硬件引脚映射 (如画面反转，修改此处) ---
+    OLED_Command(0xA1); // 段重映射: 0xA0左右反转, 0xA1正常
+    OLED_Command(0xC8); // 扫描方向: 0xC0上下反转, 0xC8正常
 
-    OLED_Command(0x81); // Set contrast
-    OLED_Command(0xFF);
+    OLED_Command(0xDA); // 设置 COM 引脚硬件配置
+    OLED_Command(0x12); // 0.96寸屏常用 0x12
 
-    OLED_Command(0xA1); // Set segment re-map 0 to 127
+    // --- 亮度与对比度 ---
+    OLED_Command(0x81); // 设置对比度
+    OLED_Command(0xCF); // 典型值 0xCF (0x00~0xFF)
 
-    // OLED_Command(0xA7); // Set inverse color
-    OLED_Command(0xA6); // Set normal color
+    OLED_Command(0xD9); // 设置预充电周期
+    OLED_Command(0xF1); // 建议值 0xF1
 
-    OLED_Command(0xA8); // Set multiplex ratio.
-    OLED_Command(0x3F);
+    OLED_Command(0xDB); // 设置 VCOMH 高电平倍率
+    OLED_Command(0x40); 
 
-    OLED_Command(0xA4); // 0xa4,Output follows RAM content
+    // --- 寻址模式 (关键点) ---
+    OLED_Command(0x20); // 设置存储寻址模式
+    OLED_Command(0x00); // 0x00: 水平寻址 (Horizontal) 
+                        // 如果你的取模是纵向的，请尝试改为 0x02 (Page Addressing)
 
-    OLED_Command(0xD3); // Set display offset
-    OLED_Command(0x00); // --- not offset
+    // --- 开启电荷泵 (必须在 Display ON 之前) ---
+    OLED_Command(0x8D); // 电荷泵设置
+    OLED_Command(0x14); // 使能电荷泵 (DC-DC enable)
 
-    OLED_Command(0xD5); // Set display clock divide ratio/oscillator frequency
-    OLED_Command(0xF0); // Set divide ratio
-
-    OLED_Command(0xD9); // Set pre-charge period
-    OLED_Command(0x22);
-
-    OLED_Command(0xDA); // Set com pins hardware configuration
-    OLED_Command(0x12);
-
-    OLED_Command(0xDB); // Set vcomh
-    OLED_Command(0x20); // 0x20,0.77xVcc
-
-    OLED_Command(0x8D); // Set DC-DC enable
-    OLED_Command(0x14);
-    OLED_Command(0xAF); // Display on
+    // --- 最终开启 ---
+    OLED_Command(0xA4); // 输出遵循 RAM 内容 (正常显示模式)
+    OLED_Command(0xA6); // 正常显示 (非反色)
+    
+    // 清屏：在开启显示前，最好先发一次全0缓冲区，避免花屏
+    // 这里如果还没准备好缓冲区，可以直接先开启显示
+    OLED_Command(0xAF); // 开启显示 (Display ON)
+    
+    R_BSP_SoftwareDelay(100, BSP_DELAY_UNITS_MILLISECONDS);
 }
 
 void OLED_Sendbuffer(Screen* screen)
@@ -125,6 +187,8 @@ void OLED_Sendbuffer(Screen* screen)
     OLED_Command(0x22); // Setup page start and end address
     OLED_Command(0);
     OLED_Command(7);
+    R_BSP_SoftwareDelay(10, BSP_DELAY_UNITS_MICROSECONDS);
+
     OLED_Data(screen->Image, Image_size);
 }
 

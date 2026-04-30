@@ -1,6 +1,5 @@
 #include "page.h"
 #include <stddef.h>
-#include "oled.h"
 #include "output_control.h"
 
 page* current_page=NULL;

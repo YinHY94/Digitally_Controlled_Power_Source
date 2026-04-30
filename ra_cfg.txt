@@ -319,7 +319,7 @@ FSP Configuration
       Input: Noise Filter B Sampling Clock Select: No Filter
       Pin Polarity: GTIOCnA Polarity: Normal
       Pin Polarity: GTIOCnB Polarity: Normal
-      Interrupts: Callback: NULL
+      Interrupts: Callback: adc_timer_callback
       Interrupts: Overflow/Crest Interrupt Priority: Priority 2
       Interrupts: Capture/Compare match A Interrupt Priority: Disabled
       Interrupts: Capture/Compare match B Interrupt Priority: Disabled
@@ -346,7 +346,7 @@ FSP Configuration
       General: Clear after read: On
       General: Mode: Single Scan
       General: Double-trigger: Disabled
-      Input: Channel Scan Mask (channel availability varies by MCU): 
+      Input: Channel Scan Mask (channel availability varies by MCU): Channel 0
       Input: Group B Scan Mask (channel availability varies by MCU): 
       Interrupts: Normal/Group A Trigger: GPT0 COUNTER OVERFLOW (Overflow)
       Interrupts: Group B Trigger: Disabled
@@ -399,7 +399,7 @@ FSP Configuration
       General: Clear after read: On
       General: Mode: Single Scan
       General: Double-trigger: Disabled
-      Input: Channel Scan Mask (channel availability varies by MCU): 
+      Input: Channel Scan Mask (channel availability varies by MCU): Channel 1
       Input: Group B Scan Mask (channel availability varies by MCU): 
       Interrupts: Normal/Group A Trigger: GPT0 COUNTER OVERFLOW (Overflow)
       Interrupts: Group B Trigger: Disabled
@@ -476,7 +476,7 @@ FSP Configuration
       Input: Noise Filter B Sampling Clock Select: No Filter
       Pin Polarity: GTIOCnA Polarity: Normal
       Pin Polarity: GTIOCnB Polarity: Normal
-      Interrupts: Callback: NULL
+      Interrupts: Callback: output_timer_callback
       Interrupts: Overflow/Crest Interrupt Priority: Priority 2
       Interrupts: Capture/Compare match A Interrupt Priority: Disabled
       Interrupts: Capture/Compare match B Interrupt Priority: Disabled
@@ -499,12 +499,12 @@ FSP Configuration
       General: Name: oled_timer
       General: Channel: 2
       General: Mode: Periodic
-      General: Period: 10000000
+      General: Period: 100
       General: Compare Match: Compare Match A: Status: Disabled
       General: Compare Match: Compare Match A: Compare match value: 0
       General: Compare Match: Compare Match B: Status: Disabled
       General: Compare Match: Compare Match B: Compare match value: 0
-      General: Period Unit: Raw Counts
+      General: Period Unit: Milliseconds
       Output: Custom Waveform: GTIOA: Initial Output Level: Pin Level Low
       Output: Custom Waveform: GTIOA: Cycle End Output Level: Pin Level Retain
       Output: Custom Waveform: GTIOA: Compare Match Output Level: Pin Level Retain
@@ -531,7 +531,7 @@ FSP Configuration
       Pin Polarity: GTIOCnA Polarity: Normal
       Pin Polarity: GTIOCnB Polarity: Normal
       Interrupts: Callback: oled_timer_callback
-      Interrupts: Overflow/Crest Interrupt Priority: Priority 10
+      Interrupts: Overflow/Crest Interrupt Priority: Priority 13
       Interrupts: Capture/Compare match A Interrupt Priority: Disabled
       Interrupts: Capture/Compare match B Interrupt Priority: Disabled
       Interrupts: Underflow/Trough Interrupt Priority: Disabled

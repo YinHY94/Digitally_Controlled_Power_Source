@@ -7,7 +7,12 @@ void adc_init(void){
     fsp_err_t err = FSP_SUCCESS;
     err = R_ADC_Open(&current_adc_ctrl, &current_adc_cfg);
     assert(FSP_SUCCESS == err);
+    err = R_ADC_ScanCfg(&current_adc_ctrl, &current_adc_channel_cfg);
+    assert(FSP_SUCCESS == err);
+
     err = R_ADC_Open(&voltage_adc_ctrl, &voltage_adc_cfg);
+    assert(FSP_SUCCESS == err);
+    err = R_ADC_ScanCfg(&voltage_adc_ctrl, &voltage_adc_channel_cfg);
     assert(FSP_SUCCESS == err);
 }
 

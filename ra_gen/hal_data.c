@@ -306,7 +306,7 @@ const timer_cfg_t oled_timer_cfg =
     .p_context           = (void *) &NULL,
 #endif
     .p_extend            = &oled_timer_extend,
-    .cycle_end_ipl       = (10),
+    .cycle_end_ipl       = (13),
 #if defined(VECTOR_NUMBER_GPT2_COUNTER_OVERFLOW)
     .cycle_end_irq       = VECTOR_NUMBER_GPT2_COUNTER_OVERFLOW,
 #else
@@ -407,7 +407,7 @@ const timer_cfg_t output_timer_cfg =
     .mode                = TIMER_MODE_TRIANGLE_WAVE_SYMMETRIC_PWM,
     /* Actual period: 0.000025 seconds. Actual duty: 50%. */ .period_counts = (uint32_t) 0x4e2, .duty_cycle_counts = 0x271, .source_div = (timer_source_div_t)0,
     .channel             = 1,
-    .p_callback          = NULL,
+    .p_callback          = output_timer_callback,
     /** If NULL then do not add & */
 #if defined(NULL)
     .p_context           = NULL,
@@ -545,7 +545,7 @@ const adc_window_cfg_t voltage_adc_window_cfg =
 #endif
 const adc_channel_cfg_t voltage_adc_channel_cfg =
 {
-    .scan_mask           =  0,
+    .scan_mask           = ADC_MASK_CHANNEL_1 |  0,
     .scan_mask_group_b   =  0,
     .priority_group_a    = ADC_GROUP_A_PRIORITY_OFF,
     .add_mask            =  0,
@@ -681,7 +681,7 @@ const adc_window_cfg_t current_adc_window_cfg =
 #endif
 const adc_channel_cfg_t current_adc_channel_cfg =
 {
-    .scan_mask           =  0,
+    .scan_mask           = ADC_MASK_CHANNEL_0 |  0,
     .scan_mask_group_b   =  0,
     .priority_group_a    = ADC_GROUP_A_PRIORITY_OFF,
     .add_mask            =  0,
@@ -788,7 +788,7 @@ const timer_cfg_t adc_timer_cfg =
     .mode                = TIMER_MODE_PERIODIC,
     /* Actual period: 0.0000125 seconds. Actual duty: 50%. */ .period_counts = (uint32_t) 0x4e2, .duty_cycle_counts = 0x271, .source_div = (timer_source_div_t)0,
     .channel             = 0,
-    .p_callback          = NULL,
+    .p_callback          = adc_timer_callback,
     /** If NULL then do not add & */
 #if defined(NULL)
     .p_context           = NULL,
